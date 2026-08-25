@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="icon" type="image/x-icon" href="https://cdn2.cdnstep.com/NxeQPF9CoYXp4o0PLntC/cover-1.thumb256.png">
+    <script src="views/cards.js" type="module" defer></script>
+</head>
+
+<body class="grid grid-cols-12 min-h-screen">
+    <header class="p-5 col-span-2 shadow-lg z-10 relative">
+        <nav class="sticky top-5">
+            <ul class="flex flex-col gap-2">
+                <li class="p-2 text-gray-500 rounded hover:bg-gray-100 transition duration-100 cursor-pointer"><a href="index.html" class="font-semibold block w-full">Enter ID</a></li>
+                <li class="p-2 text-gray-500 rounded hover:bg-gray-100 transition duration-100 cursor-pointer"><a href="dashboard.html" class="font-semibold block w-full">Dashboard</a></li>
+                <li class="p-2 text-gray-500 rounded hover:bg-gray-100 transition duration-100 cursor-pointer"><a href="shows.html" class="font-semibold block w-full">Shows</a></li>
+                <li class="p-2 text-gray-500 rounded hover:bg-gray-100 transition duration-100 cursor-pointer"><a href="songs.html" class="font-semibold block w-full">Songs</a></li>
+                <li class="p-2 text-gray-500 rounded hover:bg-gray-100 transition duration-100 cursor-pointer"><a href="characters.html" class="font-semibold block w-full">Characters</a></li>
+                <li class="p-2 bg-emerald-200 rounded"><a href="cards.html" class="font-semibold block w-full">Cards</a></li>
+                <li class="p-2 text-gray-500 rounded hover:bg-gray-100 transition duration-100 cursor-pointer"><a href="teams.html" class="font-semibold block w-full">Teams</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="p-5 col-span-10 h-full bg-slate-100 ">
+        <section>
+            <h1 class="text-3xl font-semibold m-3">Card Database</h1>
+            <form class="bg-white shadow mb-4 flex flex-col justify-between p-4 gap-2 rounded">
+                <div class="flex gap-2 items-center">
+                    <label for="cardTitle">Title:</label>
+                    <input class="px-1 border border-slate-300 rounded flex-1" type="text" id="cardTitle" name="cardTitle">
+                </div>
+                <div class="flex gap-2 items-center">
+                    <label for="character">Character:</label>
+                    <select name="character" class="border border-slate-300 rounded" id="character" multiple>
+                        <option value="tenmaTsukasa">Tenma Tsukasa</option>
+                        <option value="hatsuneMiku">Hatsune Miku</option>
+                        <option value="tenmaSaki">Tenma Saki</option>
+                        <option value="enaShinonome">Ena Shinonome</option>
+                        <option value="hoshinoIchika">Hoshino Ichika</option>
+                        <option value="kaito">KAITO</option>
+                        <option value="MEIKO">MEIKO</option>
+                        <option value="yoisakiKanade">Yoisaki Kanade</option>
+                        <option value="shiraishiAn">Shiraishi An</option>
+                    </select>
+                    <label for="rarity">Rarity:</label>
+                    <select name="rarity" class="border border-slate-300 rounded" id="rarity" multiple>
+                        <option value="1star">1 star</option>
+                        <option value="2star">2 stars</option>
+                        <option value="3star">3 stars</option>
+                        <option value="birthday">Birthday</option>
+                        <option value="4star">4 stars</option>
+                    </select>
+                    <label for="attribute">Attribute:</label>
+                    <select name="attribute" class="border border-slate-300 rounded" id="attribute" multiple>
+                        <option value="pure">Pure</option>
+                        <option value="cool">Cool</option>
+                        <option value="mysterious">Mysterious</option>
+                        <option value="happy">Happy</option>
+                        <option value="cute">Cute</option>
+                    </select>
+                    <label for="unit">Unit:</label>
+                    <select name="unit" class="border border-slate-300 rounded" id="unit" multiple>
+                        <option value="leoNeed">Leo/need</option>
+                        <option value="wonderlandsShowtime">Wonderlands x Showtime</option>
+                        <option value="virtualSinger">Virtual Singer</option>
+                        <option value="vividBadSquad">Vivid BAD SQUAD</option>
+                        <option value="nightcord">Nightcord at 25:00</option>
+                        <option value="moreMoreJump">MORE MORE JUMP</option>
+                    </select>
+                    <label for="cardLevel">Level:</label>
+                    <input class="px-1 border border-slate-300 rounded" type="number" id="cardLevel" name="cardLevel">
+                </div>
+            </form>
+            <ul class="grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-4" id="cardList"></ul>
+        </section>
+    </main>
+</body>
+
+</html>

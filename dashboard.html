@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="icon" type="image/x-icon" href="https://cdn2.cdnstep.com/NxeQPF9CoYXp4o0PLntC/cover-1.thumb256.png">
+    <script src="views/dashboard.js" type="module" defer></script>
+</head>
+
+<body class="grid grid-cols-12 min-h-screen">
+    <header class="p-5 col-span-2 shadow-lg z-10 relative">
+        <nav class="sticky top-5">
+            <ul class="flex flex-col gap-2">
+                <li class="p-2 text-gray-500 rounded hover:bg-gray-100 transition duration-100 cursor-pointer"><a
+                        href="index.html" class="font-semibold block w-full">Enter ID</a></li>
+                <li class="p-2 bg-emerald-200 rounded"><a href="dashboard.html"
+                        class="font-semibold block w-full">Dashboard</a></li>
+                <li class="p-2 text-gray-500 rounded hover:bg-gray-100 transition duration-100 cursor-pointer"><a
+                        href="shows.html" class="font-semibold block w-full">Shows</a></li>
+                <li class="p-2 text-gray-500 rounded hover:bg-gray-100 transition duration-100 cursor-pointer"><a
+                        href="songs.html" class="font-semibold block w-full">Songs</a></li>
+                <li class="p-2 text-gray-500 rounded hover:bg-gray-100 transition duration-100 cursor-pointer"><a
+                        href="characters.html" class="font-semibold block w-full">Characters</a></li>
+                <li class="p-2 text-gray-500 rounded hover:bg-gray-100 transition duration-100 cursor-pointer"><a
+                        href="cards.html" class="font-semibold block w-full">Cards</a></li>
+                <li class="p-2 text-gray-500 rounded hover:bg-gray-100 transition duration-100 cursor-pointer"><a
+                        href="teams.html" class="font-semibold block w-full">Teams</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="p-5 col-span-10 h-full bg-slate-100">
+        <h1 class="text-3xl font-semibold mb-3">Dashboard</h1>
+        <section class="mb-10">
+            <h2 class="text-2xl font-semibold mb-3">Overall Accuracy</h2>
+            <div class="grid grid-cols-5 gap-4">
+                <div class="relative shadow col-span-1 p-5 rounded">
+                    <div
+                        class="absolute inset-0 rounded bg-linear-to-br/longer from-yellow-500 to-cyan-400 to-90% opacity-70">
+                    </div>
+                    <h3 class="relative z-10 text-lg mb-2 text-white">Perfects</h3>
+                    <p class="relative z-10 text-2xl font-semibold text-white" id="perfectStatistic"></p>
+                </div>
+                <div class="bg-white shadow col-span-1 p-5 rounded">
+                    <h3 class="text-lg mb-2 text-gray-500">Greats</h3>
+                    <p class="text-2xl font-semibold text-purple-400" id="greatStatistic"></p>
+                </div>
+                <div class="bg-white shadow col-span-1 p-5 rounded">
+                    <h3 class="text-lg mb-2 text-gray-500">Goods</h3>
+                    <p class="text-2xl font-semibold text-blue-400" id="goodStatistic"></p>
+                </div>
+                <div class="bg-white shadow col-span-1 p-5 rounded">
+                    <h3 class="text-lg mb-2 text-gray-500">Bads</h3>
+                    <p class="text-2xl font-semibold text-emerald-400" id="badStatistic"></p>
+                </div>
+                <div class="bg-white shadow col-span-1 p-5 rounded">
+                    <h3 class="text-lg mb-2 text-gray-500">Misses</h3>
+                    <p class="text-2xl font-semibold text-gray-400" id="missStatistic"></p>
+                </div>
+            </div>
+        </section>
+        <section class="mb-10">
+            <h2 class="text-2xl font-semibold mb-3">Songs</h2>
+            <div class="grid grid-cols-4 gap-4">
+                <div class="bg-white shadow col-span-1 p-5 rounded">
+                    <h3 class="text-lg mb-2 text-gray-500">Average Level</h3>
+                    <p class="text-2xl font-semibold" id="averageLevelStatistic"></p>
+                </div>
+                <div class="bg-white shadow col-span-1 p-5 rounded">
+                    <h3 class="text-lg mb-2 text-gray-500">Average Score</h3>
+                    <p class="text-2xl font-semibold" id="averageScoreStatistic"></p>
+                </div>
+                <div class="bg-white shadow col-span-1 p-5 rounded">
+                    <h3 class="text-lg mb-2 text-gray-500">Median Rank</h3>
+                    <p class="text-2xl font-semibold" id="medianRankStatistic"></p>
+                </div>
+                <div id="modeSongBackground"
+                    class="bg-white shadow col-span-1 p-5 rounded relative bg-cover bg-[position:5%_25%] bg-no-repeat">
+                    <div class="absolute inset-0 bg-white/30 backdrop-grayscale-200"></div>
+                    <div class="absolute inset-0 opacity-50 rounded bg-linear-to-r from-indigo-500 to-cyan-500"></div>
+                    <h3 class="relative text-lg mb-2 text-white z-10">Most Played Song</h3>
+                    <p class="relative text-2xl font-semibold z-10 text-white" id="modeSongStatistic"></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-10 font-semibold">
+            <h2 class="text-2xl font-semibold mb-3">Recent Shows</h2>
+            <div class="grid grid-cols-7 gap-2 bg-white shadow rounded p-5 text-lg" id="showsTable">
+                <div class="col-span-7 grid grid-cols-7 gap-2 bg-gray-100">
+                    <div class="text-center">Date</div>
+                    <div class="col-span-2">Chart</div>
+                    <div>Score</div>
+                    <div class="">Clear Status</div>
+                    <div class="col-span-2">Perfect Accuracy</div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

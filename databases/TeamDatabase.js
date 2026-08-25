@@ -1,0 +1,71 @@
+import DatabaseHandler from "./DatabaseHandler.js"
+import CardDatabase from "./CardDatabase.js"
+
+class Team {
+    static #teams = []
+
+    constructor(
+        team,
+        leader,
+        subleader,
+        member1,
+        member2,
+        member3
+    ) {
+        this.team = team
+        this.leader = leader
+        this.subleader = subleader
+        this.member1 = member1
+        this.member2 = member2
+        this.member3 = member3
+
+        if(!Team.teams) {
+            Team.teams = []
+        }
+        Team.teams.push(this)
+    }
+
+    static getTeams() {
+        return Team.teams
+    }
+}
+
+export default class TeamDatabase {
+    static #instance
+    static #sheetName = 'teams'
+
+    static #cardDatabase
+
+    static async getInstance(googleSheetsID) {
+        if(!TeamDatabase.instance) {
+            if(!TeamDatabase.sheetName) {
+                TeamDatabase.sheetName = 'teams'
+            }
+            if(!TeamDatabase.cardDatabase) {
+                TeamDatabase.cardDatabase = await CardDatabase.getInstance(googleSheetsID)
+            }
+
+            TeamDatabase.instance = new TeamDatabase()
+            const database = DatabaseHandler.getDatabase(googleSheetsID)
+            const rows = await database.getObjects(TeamDatabase.sheetName)
+            rows.forEach(row => new Team(
+                row.c[0].v,
+                TeamDatabase.cardDatabase.getCard(row.c[1].v),
+                TeamDatabase.cardDatabase.getCard(row.c[2].v),
+                TeamDatabase.cardDatabase.getCard(row.c[3].v),
+                TeamDatabase.cardDatabase.getCard(row.c[4].v),
+                TeamDatabase.cardDatabase.getCard(row.c[5].v),
+            ))
+        }
+        return TeamDatabase.instance
+    }
+
+    getAllTeams() {
+        return [...Team.getTeams()]
+    }
+
+    getTeam(teamName) {
+        const teams = this.getAllTeams()
+        return teams.find(team => team.team === teamName)
+    }
+}

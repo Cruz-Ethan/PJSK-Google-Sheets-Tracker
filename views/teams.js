@@ -22,11 +22,11 @@ allTeams.forEach(team => {
                         </div>
                     </div>
                     <div class="px-16 py-5 grid grid-cols-5 col-span-4 gap-5">
-                        <img src="${team.leader ? getCurrentImageUrl(team.leader) : ''}" class="bg-gray-200 rounded aspect-square w-full" alt="">
-                        <img src="${team.subleader ? getCurrentImageUrl(team.subleader) : ''}" class="bg-gray-200 rounded aspect-square w-full" alt="">
-                        <img src="${team.member1 ? getCurrentImageUrl(team.member1) : ''}" class="bg-gray-200 rounded aspect-square w-full" alt="">
-                        <img src="${team.member2 ? getCurrentImageUrl(team.member2) : ''}" class="bg-gray-200 rounded aspect-square w-full" alt="">
-                        <img src="${team.member3 ? getCurrentImageUrl(team.member3) : ''}" class="bg-gray-200 rounded aspect-square w-full" alt="">
+                        ${team.leader ? '<img src="' + getCurrentImageUrl(team.leader) + '"  class="w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square w-full"></div>'}
+                        ${team.subleader ? '<img src="' + getCurrentImageUrl(team.subleader) + '"  class="w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square w-full"></div>'}
+                        ${team.member1 ? '<img src="' + getCurrentImageUrl(team.member1) + '"  class="w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square w-full"></div>'}
+                        ${team.member2 ? '<img src="' + getCurrentImageUrl(team.member2) + '"  class="w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square w-full"></div>'}
+                        ${team.member3 ? '<img src="' + getCurrentImageUrl(team.member3) + '" class="w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square w-full"></div>'}
                     </div>
                 </li>`
 })

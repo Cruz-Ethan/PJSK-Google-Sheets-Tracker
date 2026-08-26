@@ -4,6 +4,13 @@ import { getDate } from "../utils/format.js"
 
 class CardSnapshot {
     static #cardSnapshots = []
+    #card
+    #time
+    #level
+    #masteryRank
+    #talent
+    #skillLevel
+    #isTrained
 
     constructor(
         card,
@@ -14,13 +21,13 @@ class CardSnapshot {
         skillLevel,
         isTrained
     ) {
-        this.card = card
-        this.time = getDate(timeString)
-        this.level = level
-        this.masteryRank = masteryRank
-        this.talent = talent
-        this.skillLevel = skillLevel
-        this.isTrained = isTrained
+        this.#card = card
+        this.#time = getDate(timeString)
+        this.#level = level
+        this.#masteryRank = masteryRank
+        this.#talent = talent
+        this.#skillLevel = skillLevel
+        this.#isTrained = isTrained
 
         if(!CardSnapshot.cardSnapshots) {
             CardSnapshot.cardSnapshots = []
@@ -31,6 +38,14 @@ class CardSnapshot {
     static getCardSnapshots() {
         return CardSnapshot.cardSnapshots
     }
+
+    get card() { return this.#card }
+    get time() { return this.#time }
+    get level() { return this.#level }
+    get masteryRank() { return this.#masteryRank }
+    get talent() { return this.#talent }
+    get skillLevel() { return this.#skillLevel }
+    get isTrained() { return this.#isTrained }
 }
 
 export default class CardSnapshotDatabase {

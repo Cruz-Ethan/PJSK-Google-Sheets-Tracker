@@ -5,10 +5,14 @@ import { getDate } from "../utils/format.js"
 class CharacterItemSnapshot {
     static #characterItemSnapshots = []
 
+    #characterAreaItem
+    #time
+    #talentBoostPercentage
+
     constructor(characterAreaItem, timeString, talentBoost) {
-        this.characterAreaItem = characterAreaItem
-        this.time = getDate(timeString)
-        this.talentBoostPercentage = talentBoost * 100
+        this.#characterAreaItem = characterAreaItem
+        this.#time = getDate(timeString)
+        this.#talentBoostPercentage = talentBoost * 100
 
         if(!CharacterItemSnapshot.characterItemSnapshots) {
             CharacterItemSnapshot.characterItemSnapshots = []
@@ -19,6 +23,10 @@ class CharacterItemSnapshot {
     static getCharacterItemSnapshots() {
         return CharacterItemSnapshot.characterItemSnapshots
     }
+
+    get characterAreaItem() { return this.#characterAreaItem }
+    get time() { return this.#time }
+    get talentBoostPercentage() { return this.#talentBoostPercentage }
 }
 
 export default class CharacterItemSnapshotDatabase {

@@ -4,6 +4,13 @@ import CardDatabase from "./CardDatabase.js"
 class Team {
     static #teams = []
 
+    #team
+    #leader
+    #subleader
+    #member1
+    #member2
+    #member3
+
     constructor(
         team,
         leader,
@@ -12,12 +19,12 @@ class Team {
         member2,
         member3
     ) {
-        this.team = team
-        this.leader = leader
-        this.subleader = subleader
-        this.member1 = member1
-        this.member2 = member2
-        this.member3 = member3
+        this.#team = team
+        this.#leader = leader
+        this.#subleader = subleader
+        this.#member1 = member1
+        this.#member2 = member2
+        this.#member3 = member3
 
         if(!Team.teams) {
             Team.teams = []
@@ -28,6 +35,13 @@ class Team {
     static getTeams() {
         return Team.teams
     }
+
+    get team() { return this.#team }
+    get leader() { return this.#leader }
+    get subleader() { return this.#subleader }
+    get member1() { return this.#member1 }
+    get member2() { return this.#member2 }
+    get member3() { return this.#member3 }
 }
 
 export default class TeamDatabase {

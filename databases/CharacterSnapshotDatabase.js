@@ -5,10 +5,14 @@ import { getDate } from "../utils/format.js"
 class CharacterSnapshot {
     static #characterSnapshots = []
 
+    #character
+    #time
+    #rank
+
     constructor(character, timeString, rank) {
-        this.character = character
-        this.time = getDate(timeString)
-        this.rank = rank
+        this.#character = character
+        this.#time = getDate(timeString)
+        this.#rank = rank
         if(!CharacterSnapshot.characterSnapshots) {
             CharacterSnapshot.characterSnapshots = []
         }
@@ -18,6 +22,10 @@ class CharacterSnapshot {
     static getCharacterSnapshots() {
         return CharacterSnapshot.characterSnapshots
     }
+
+    get character() { return this.#character }
+    get time() { return this.#time }
+    get rank() { return this.#rank }
 }
 
 export default class CharacterSnapshotDatabase {

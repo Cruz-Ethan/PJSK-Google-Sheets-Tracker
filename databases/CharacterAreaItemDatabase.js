@@ -4,9 +4,12 @@ import CharacterDatabase from "./CharacterDatabase.js"
 class CharacterAreaItem {
     static #characterAreaItems = []
 
+    #characterAreaItem
+    #character
+
     constructor(characterAreaItem, character) {
-        this.characterAreaItem = characterAreaItem
-        this.character = character
+        this.#characterAreaItem = characterAreaItem
+        this.#character = character
 
         if(!CharacterAreaItem.characterAreaItems) {
             CharacterAreaItem.characterAreaItems = []
@@ -17,6 +20,9 @@ class CharacterAreaItem {
     static getCharacterAreaItems() {
         return CharacterAreaItem.characterAreaItems
     }
+
+    get characterAreaItem() { return this.#characterAreaItem }
+    get character() { return this.#character }
 }
 
 export default class CharacterAreaItemDatabase {

@@ -3,8 +3,10 @@ import DatabaseHandler from "./DatabaseHandler.js"
 class ShowType {
     static #showTypes = []
 
+    #showType
+
     constructor(showType) {
-        this.showType = showType
+        this.#showType = showType
         if(!ShowType.showTypes) {
             ShowType.showTypes = []
         }
@@ -14,6 +16,8 @@ class ShowType {
     static getShowTypes() {
         return ShowType.showTypes
     }
+
+    get showType() { return this.#showType }
 }
 
 export default class ShowTypeDatabase {

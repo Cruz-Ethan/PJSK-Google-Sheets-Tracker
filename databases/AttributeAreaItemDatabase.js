@@ -3,10 +3,12 @@ import AttributeDatabase from "./AttributeDatabase.js"
 
 class AttributeAreaItem {
     static #attributeAreaItems = []
+    #attributeAreaItem
+    #attribute
 
     constructor(attributeAreaItem, attribute) {
-        this.attributeAreaItem = attributeAreaItem
-        this.attribute = attribute
+        this.#attributeAreaItem = attributeAreaItem
+        this.#attribute = attribute
 
         if(!AttributeAreaItem.attributeAreaItems) {
             AttributeAreaItem.attributeAreaItems = []
@@ -16,6 +18,14 @@ class AttributeAreaItem {
 
     static getAttributeAreaItems() {
         return AttributeAreaItem.attributeAreaItems
+    }
+
+    get attributeAreaItem() {
+        return this.#attributeAreaItem
+    }
+
+    get attribute() {
+        return this.#attribute
     }
 }
 

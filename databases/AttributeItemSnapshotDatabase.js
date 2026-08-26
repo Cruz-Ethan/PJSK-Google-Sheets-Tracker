@@ -4,11 +4,14 @@ import { getDate } from "../utils/format.js"
 
 class AttributeItemSnapshot {
     static #attributeItemSnapshots = []
+    #attributeAreaItem
+    #time
+    #talentBoostPercentage
 
     constructor(attributeAreaItem, timeString, talentBoost) {
-        this.attributeAreaItem = attributeAreaItem
-        this.time = getDate(timeString)
-        this.talentBoostPercentage = talentBoost * 100
+        this.#attributeAreaItem = attributeAreaItem
+        this.#time = getDate(timeString)
+        this.#talentBoostPercentage = talentBoost * 100
 
         if(!AttributeItemSnapshot.attributeItemSnapshots) {
             AttributeItemSnapshot.attributeItemSnapshots = []
@@ -18,6 +21,18 @@ class AttributeItemSnapshot {
 
     static getAttributeItemSnapshots() {
         return AttributeItemSnapshot.attributeItemSnapshots
+    }
+
+    get attributeAreaItem() {
+        return this.#attributeAreaItem
+    }
+
+    get time() {
+        return this.#time
+    }
+
+    get talentBoost() {
+        return this.#talentBoostPercentage
     }
 }
 

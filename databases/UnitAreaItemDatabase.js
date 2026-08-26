@@ -4,9 +4,12 @@ import SupportUnitDatabase from "./SupportUnitDatabase.js"
 class UnitAreaItem {
     static #unitAreaItems = []
 
+    #unitAreaItem
+    #supportUnit
+
     constructor(unitAreaItem, supportUnit) {
-        this.unitAreaItem = unitAreaItem
-        this.supportUnit = supportUnit
+        this.#unitAreaItem = unitAreaItem
+        this.#supportUnit = supportUnit
 
         if(!UnitAreaItem.unitAreaItems) {
             UnitAreaItem.unitAreaItems = []
@@ -17,6 +20,9 @@ class UnitAreaItem {
     static getUnitAreaItems() {
         return UnitAreaItem.unitAreaItems
     }
+
+    get unitAreaItem() { return this.#unitAreaItem }
+    get supportUnit() { return this.#supportUnit }
 }
 
 export default class UnitAreaItemDatabase {

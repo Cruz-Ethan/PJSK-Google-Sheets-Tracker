@@ -3,8 +3,10 @@ import DatabaseHandler from "./DatabaseHandler.js"
 class SupportUnit {
     static #supportUnits = []
 
+    #supportUnit
+
     constructor(supportUnit) {
-        this.supportUnit = supportUnit
+        this.#supportUnit = supportUnit
         if(!SupportUnit.supportUnits) {
             SupportUnit.supportUnits = []
         }
@@ -14,6 +16,8 @@ class SupportUnit {
     static getSupportUnits() {
         return SupportUnit.supportUnits
     }
+
+    get supportUnit() { return this.#supportUnit }
 }
 
 export default class SupportUnitDatabase {

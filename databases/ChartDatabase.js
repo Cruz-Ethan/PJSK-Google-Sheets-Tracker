@@ -5,11 +5,16 @@ import DifficultyDatabase from "./DifficultyDatabase.js"
 class Chart {
     static #charts = []
 
+    #song
+    #difficulty
+    #level
+    #length
+
     constructor(song, difficulty, level, length) {
-        this.song = song
-        this.difficulty = difficulty
-        this.level = level
-        this.length = length
+        this.#song = song
+        this.#difficulty = difficulty
+        this.#level = level
+        this.#length = length
         if(!Chart.charts) {
             Chart.charts = []
         }
@@ -19,6 +24,11 @@ class Chart {
     static getCharts() {
         return Chart.charts
     }
+
+    get song() { return this.#song }
+    get difficulty() { return this.#difficulty }
+    get level() { return this.#level }
+    get length() { return this.#length }
 }
 
 export default class ChartDatabase {

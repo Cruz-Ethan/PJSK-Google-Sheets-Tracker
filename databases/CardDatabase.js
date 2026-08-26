@@ -7,6 +7,14 @@ import RarityDatabase from "./RarityDatabase.js"
 
 class Card {
     static #cards = []
+    #card
+    #character
+    #supportUnit
+    #attribute
+    #skillType
+    #rarity
+    #untrainedUrl
+    #trainedUrl
 
     constructor(
         card,
@@ -18,14 +26,14 @@ class Card {
         untrainedUrl,
         trainedUrl
     ) {
-        this.card = card
-        this.character = character
-        this.supportUnit = supportUnit
-        this.attribute = attribute
-        this.skillType = skillType
-        this.rarity = rarity
-        this.untrainedUrl = untrainedUrl
-        this.trainedUrl = trainedUrl
+        this.#card = card
+        this.#character = character
+        this.#supportUnit = supportUnit
+        this.#attribute = attribute
+        this.#skillType = skillType
+        this.#rarity = rarity
+        this.#untrainedUrl = untrainedUrl
+        this.#trainedUrl = trainedUrl
 
         if(!Card.cards) {
             Card.cards = []
@@ -36,6 +44,15 @@ class Card {
     static getCards() {
         return Card.cards
     }
+
+    get card() { return this.#card }
+    get character() { return this.#character }
+    get supportUnit() { return this.#supportUnit }
+    get attribute() { return this.#attribute }
+    get skillType() { return this.#skillType }
+    get rarity() { return this.#rarity }
+    get untrainedUrl() { return this.#untrainedUrl }
+    get trainedUrl() { return this.#trainedUrl }
 }
 
 export default class CardDatabase {

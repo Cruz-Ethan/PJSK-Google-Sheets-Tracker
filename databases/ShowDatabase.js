@@ -9,6 +9,25 @@ import { getDate } from "../utils/format.js"
 class Show {
     static #shows = []
 
+    #show
+    #song
+    #difficulty
+    #showType
+    #noteSpeed
+    #team
+    #time
+    #score
+    #rank
+    #failed
+    #interruptions
+    #attempts
+    #perfects
+    #greats
+    #goods
+    #bads
+    #misses
+    #longestCombo
+
     constructor(
         show,
         song,
@@ -29,24 +48,24 @@ class Show {
         misses,
         longestCombo
     ) {
-        this.show = show
-        this.song = song
-        this.difficulty = difficulty
-        this.showType = showType
-        this.noteSpeed = noteSpeed
-        this.team = team
-        this.time = getDate(timeString)
-        this.score = score
-        this.rank = rank
-        this.failed = failed
-        this.interruptions = interruptions
-        this.attempts = attempts
-        this.perfects = perfects
-        this.greats = greats
-        this.goods = goods
-        this.bads = bads
-        this.misses = misses
-        this.longestCombo = longestCombo
+        this.#show = show
+        this.#song = song
+        this.#difficulty = difficulty
+        this.#showType = showType
+        this.#noteSpeed = noteSpeed
+        this.#team = team
+        this.#time = getDate(timeString)
+        this.#score = score
+        this.#rank = rank
+        this.#failed = failed
+        this.#interruptions = interruptions
+        this.#attempts = attempts
+        this.#perfects = perfects
+        this.#greats = greats
+        this.#goods = goods
+        this.#bads = bads
+        this.#misses = misses
+        this.#longestCombo = longestCombo
 
         if(!Show.shows) {
             Show.shows = []
@@ -57,6 +76,25 @@ class Show {
     static getShows() {
         return Show.shows
     }
+
+    get show() { return this.#show }
+    get song() { return this.#song }
+    get difficulty() { return this.#difficulty }
+    get showType() { return this.#showType }
+    get noteSpeed() { return this.#noteSpeed }
+    get team() { return this.#team }
+    get time() { return this.#time }
+    get score() { return this.#score }
+    get rank() { return this.#rank }
+    get failed() { return this.#failed }
+    get interruptions() { return this.#interruptions }
+    get attempts() { return this.#attempts }
+    get perfects() { return this.#perfects }
+    get greats() { return this.#greats }
+    get goods() { return this.#goods }
+    get bads() { return this.#bads }
+    get misses() { return this.#misses }
+    get longestCombo() { return this.#longestCombo }
 }
 
 export default class ShowDatabase {

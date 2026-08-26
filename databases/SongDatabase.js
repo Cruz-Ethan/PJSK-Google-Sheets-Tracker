@@ -3,9 +3,12 @@ import DatabaseHandler from "./DatabaseHandler.js"
 class Song {
     static #songs = []
 
+    #song
+    #imageUrl
+
     constructor(song, imageUrl) {
-        this.song = song
-        this.imageUrl = imageUrl
+        this.#song = song
+        this.#imageUrl = imageUrl
         
         if(!Song.songs) {
             Song.songs = []
@@ -16,6 +19,9 @@ class Song {
     static getSongs() {
         return Song.songs
     }
+
+    get song() { return this.#song }
+    get imageUrl() { return this.#imageUrl }
 }
 
 export default class SongDatabase {

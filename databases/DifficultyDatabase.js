@@ -3,8 +3,10 @@ import DatabaseHandler from "./DatabaseHandler.js"
 class Difficulty {
     static #difficulties = []
 
+    #difficulty
+
     constructor(difficulty) {
-        this.difficulty = difficulty
+        this.#difficulty = difficulty
         if(!Difficulty.difficulties) {
             Difficulty.difficulties = []
         }
@@ -14,6 +16,8 @@ class Difficulty {
     static getDifficulties() {
         return Difficulty.difficulties
     }
+
+    get difficulty() { return this.#difficulty }
 }
 
 export default class DifficultyDatabase {

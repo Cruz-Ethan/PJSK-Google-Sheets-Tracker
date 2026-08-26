@@ -5,6 +5,16 @@ import RarityDatabase from "./RarityDatabase.js"
 class SkillEffect {
     static #skillEffects = []
 
+    #skillType
+    #rarity
+    #skillLevel
+    #isTrained
+    #isVirtualSinger
+    #scoreBoostPercentage
+    #perfectLockerMinimum
+    #perfectLockerDuration
+    #healthBoost
+
     constructor(
         skillType,
         rarity,
@@ -16,15 +26,15 @@ class SkillEffect {
         perfectLockerDuration,
         healthBoost
     ) {
-        this.skillType = skillType
-        this.rarity = rarity
-        this.skillLevel = skillLevel
-        this.isTrained = isTrained
-        this.isVirtualSinger = isVirtualSinger
-        this.scoreBoostPercentage = scoreBoost * 100
-        this.perfectLockerMinimum = perfectLockerMinimum
-        this.perfectLockerDuration = perfectLockerDuration
-        this.healthBoost = healthBoost
+        this.#skillType = skillType
+        this.#rarity = rarity
+        this.#skillLevel = skillLevel
+        this.#isTrained = isTrained
+        this.#isVirtualSinger = isVirtualSinger
+        this.#scoreBoostPercentage = scoreBoost * 100
+        this.#perfectLockerMinimum = perfectLockerMinimum
+        this.#perfectLockerDuration = perfectLockerDuration
+        this.#healthBoost = healthBoost
         
         if(!SkillEffect.skillEffects) {
             SkillEffect.skillEffects = []
@@ -35,6 +45,16 @@ class SkillEffect {
     static getSkillEffects() {
         return SkillEffect.skillEffects
     }
+
+    get skillType() { return this.#skillType }
+    get rarity() { return this.#rarity }
+    get skillLevel() { return this.#skillLevel }
+    get isTrained() { return this.#isTrained }
+    get isVirtualSinger() { return this.#isVirtualSinger }
+    get scoreBoostPercentage() { return this.#scoreBoostPercentage }
+    get perfectLockerMinimum() { return this.#perfectLockerMinimum }
+    get perfectLockerDuration() { return this.perfectLockerDuration }
+    get healthBoost() { return this.#healthBoost }
 }
 
 export default class SkillEffectDatabase {

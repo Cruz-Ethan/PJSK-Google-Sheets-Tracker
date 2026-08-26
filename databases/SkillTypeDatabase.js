@@ -3,8 +3,10 @@ import DatabaseHandler from "./DatabaseHandler.js"
 class SkillType {
     static #skillTypes = []
 
+    #skillType
+
     constructor(skillType) {
-        this.skillType = skillType
+        this.#skillType = skillType
         if(!SkillType.skillTypes) {
             SkillType.skillTypes = []
         }
@@ -14,6 +16,8 @@ class SkillType {
     static getSkillTypes() {
         return SkillType.skillTypes
     }
+
+    get skillType() { return this.#skillType }
 }
 
 export default class SkillTypeDatabase {

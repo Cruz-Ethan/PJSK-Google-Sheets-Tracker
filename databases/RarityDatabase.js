@@ -3,8 +3,10 @@ import DatabaseHandler from "./DatabaseHandler.js"
 class Rarity {
     static #rarities = []
 
+    #rarity
+
     constructor(rarity) {
-        this.rarity = rarity
+        this.#rarity = rarity
         if(!Rarity.rarities) {
             Rarity.rarities = []
         }
@@ -14,6 +16,8 @@ class Rarity {
     static getRarities() {
         return Rarity.rarities
     }
+
+    get rarity() { return this.#rarity }
 }
 
 export default class RarityDatabase {

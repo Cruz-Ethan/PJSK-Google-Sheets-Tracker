@@ -2,9 +2,10 @@ import DatabaseHandler from "./DatabaseHandler.js"
 
 class Attribute {
     static #attributes = []
+    #attribute
 
     constructor(attribute) {
-        this.attribute = attribute
+        this.#attribute = attribute
         if(!Attribute.attributes) {
             Attribute.attributes = []
         }
@@ -13,6 +14,10 @@ class Attribute {
 
     static getAttributes() {
         return Attribute.attributes
+    }
+
+    get attribute() {
+        return this.#attribute
     }
 }
 

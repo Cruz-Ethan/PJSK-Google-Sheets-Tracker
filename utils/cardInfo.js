@@ -10,26 +10,23 @@ const allCardSnapshots = cardSnapshotDatabase.getAllCardSnapshots()
 const skillEffectDatabase = await SkillEffectDatabase.getInstance(pjskGoogleSheetsID)
 const allSkillEffects = skillEffectDatabase.getAllSkillEffects()
 
-export function getCurrentTalent(card) {
-    const cardSnapshots = allCardSnapshots.filter(snapshot => snapshot.card === card)
-    if(!cardSnapshots) return 0
-
-    const latestSnapshot = cardSnapshots.reduce((prev, curr) => curr.time > prev.time ? curr : prev, cardSnapshots[0])
-    return latestSnapshot.talent
-}
-
-export function getCurrentSnapshot(card) {
-    const cardSnapshots = allCardSnapshots.filter(snapshot => snapshot.card === card)
+export function getSnapshot(card, time=new Date()) {
+    const cardSnapshots = allCardSnapshots.filter(snapshot => snapshot.card === card && snapshot.time < time)
     if(!cardSnapshots) return null
     return cardSnapshots.reduce((prev, curr) => curr.time > prev.time ? curr : prev, cardSnapshots[0])
 }
 
-export function getCurrentImageUrl(card) {
-    const currentSnapshot = getCurrentSnapshot(card)
+export function getTalent(card, time=new Date()) {
+    const currentSnapshot = getSnapshot(card, time)
+    return currentSnapshot.talent
+}
+
+export function getImageUrl(card, time=new Date()) {
+    const currentSnapshot = getSnapshot(card, time)
     return currentSnapshot.isTrained ? card.trainedUrl : card.untrainedUrl
 }
 
-export function getSkillEffect(card) {
-    const currentSnapshot = getCurrentSnapshot(card)
+export function getSkillEffect(card, time=new Date()) {
+    const currentSnapshot = getSnapshot(card, time)
     return skillEffectDatabase.getSkillEffect(card.skillType, card.rarity, currentSnapshot.skillLevel, currentSnapshot.isTrained, card.supportUnit === 'VIRTUAL SINGER')
 }

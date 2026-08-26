@@ -1,5 +1,5 @@
 import CardDatabase from "../databases/CardDatabase.js";
-import { getCurrentSnapshot } from "../utils/cardInfo.js";
+import { getSnapshot } from "../utils/cardInfo.js";
 
 const pjskGoogleSheetsID = localStorage.getItem('pjskGoogleSheetsID')
 if (!pjskGoogleSheetsID) window.location.href = 'index.html'
@@ -10,7 +10,7 @@ const allCards = cardDatabase.getAllCards()
 const cardList = document.getElementById('cardList')
 
 allCards.forEach(card => {
-    const currentSnapshot = getCurrentSnapshot(card)
+    const currentSnapshot = getSnapshot(card)
     if(currentSnapshot === null) return
 
     cardList.innerHTML += `<li class="bg-white rounded shadow flex flex-col">

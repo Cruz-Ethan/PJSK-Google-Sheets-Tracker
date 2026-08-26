@@ -1,5 +1,5 @@
 import TeamDatabase from "../databases/TeamDatabase.js";
-import { getCurrentImageUrl } from "../utils/cardInfo.js";
+import { getImageUrl } from "../utils/cardInfo.js";
 import { getTeamTalent, getTeamHealthBoost, getTeamScoreBoost } from "../utils/teamInfo.js";
 import { shorten } from "../utils/format.js";
 
@@ -22,11 +22,11 @@ allTeams.forEach(team => {
                         </div>
                     </div>
                     <div class="px-16 py-5 grid grid-cols-5 col-span-4 gap-5">
-                        ${team.leader ? '<img src="' + getCurrentImageUrl(team.leader) + '"  class="w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square w-full"></div>'}
-                        ${team.subleader ? '<img src="' + getCurrentImageUrl(team.subleader) + '"  class="w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square w-full"></div>'}
-                        ${team.member1 ? '<img src="' + getCurrentImageUrl(team.member1) + '"  class="w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square w-full"></div>'}
-                        ${team.member2 ? '<img src="' + getCurrentImageUrl(team.member2) + '"  class="w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square w-full"></div>'}
-                        ${team.member3 ? '<img src="' + getCurrentImageUrl(team.member3) + '" class="w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square w-full"></div>'}
+                        ${team.leader ? '<img src="' + getImageUrl(team.leader) + '"  class="w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square w-full"></div>'}
+                        ${team.subleader ? '<img src="' + getImageUrl(team.subleader) + '"  class="w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square w-full"></div>'}
+                        ${team.member1 ? '<img src="' + getImageUrl(team.member1) + '"  class="w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square w-full"></div>'}
+                        ${team.member2 ? '<img src="' + getImageUrl(team.member2) + '"  class="w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square w-full"></div>'}
+                        ${team.member3 ? '<img src="' + getImageUrl(team.member3) + '" class="w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square w-full"></div>'}
                     </div>
                 </li>`
 })

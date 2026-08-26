@@ -1,6 +1,6 @@
 import CharacterDatabase from "../databases/CharacterDatabase.js";
 import SupportUnitDatabase from "../databases/SupportUnitDatabase.js";
-import { getCurrentRank } from "../utils/characterInfo.js";
+import { getRank } from "../utils/characterInfo.js";
 
 const pjskGoogleSheetsID = localStorage.getItem('pjskGoogleSheetsID')
 if (!pjskGoogleSheetsID) window.location.href = 'index.html'
@@ -33,7 +33,7 @@ allUnits.forEach(unit => {
                     <img class="p-5" src="${character.imageUrl}" alt="${character.character}">
                     <div class="text-center bg-emerald-200 p-5 rounded-b flex-1">
                         <h2 class="text-xl font-semibold">${character.character}</h2>
-                        <p class="text-lg text-gray-500">Rank ${getCurrentRank(character)}</p>
+                        <p class="text-lg text-gray-500">Rank ${getRank(character)}</p>
                     </div>
                 </li>`
     })

@@ -22,6 +22,10 @@ class Rarity {
     }
 
     get rarity() { return this.#rarity }
+
+    toString() {
+        return this.#rarity
+    }
 }
 
 export default class RarityDatabase {

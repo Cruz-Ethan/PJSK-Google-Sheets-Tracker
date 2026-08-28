@@ -48,6 +48,10 @@ class AttributeItemSnapshot {
     get talentBoost() {
         return this.#talentBoostPercentage
     }
+
+    toString() {
+        return `${this.#attributeAreaItem} (${this.#time})`
+    }
 }
 
 export default class AttributeItemSnapshotDatabase {

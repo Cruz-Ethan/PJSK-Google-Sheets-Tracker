@@ -53,6 +53,10 @@ class Chart {
     get difficulty() { return this.#difficulty }
     get level() { return this.#level }
     get length() { return this.#length }
+
+    toString() {
+        return `${this.#song} (${this.difficulty})`
+    }
 }
 
 export default class ChartDatabase {

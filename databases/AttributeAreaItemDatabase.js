@@ -32,6 +32,10 @@ class AttributeAreaItem {
     get attribute() {
         return this.#attribute
     }
+
+    toString() {
+        return this.#attributeAreaItem
+    }
 }
 
 export default class AttributeAreaItemDatabase {

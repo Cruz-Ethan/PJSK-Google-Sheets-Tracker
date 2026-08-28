@@ -28,6 +28,10 @@ class CharacterAreaItem {
 
     get characterAreaItem() { return this.#characterAreaItem }
     get character() { return this.#character }
+
+    toString() {
+        return this.#characterAreaItem
+    }
 }
 
 export default class CharacterAreaItemDatabase {

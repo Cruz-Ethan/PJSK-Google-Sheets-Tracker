@@ -154,6 +154,10 @@ class SkillEffect {
     get perfectLockerMinimum() { return this.#perfectLockerMinimum }
     get perfectLockerDurationSeconds() { return this.#perfectLockerDurationSeconds }
     get healthBoost() { return this.#healthBoost }
+
+    toString() {
+        return `${this.#rarity} level ${this.#skillLevel} ${this.#skillType}`
+    }
 }
 
 export default class SkillEffectDatabase {

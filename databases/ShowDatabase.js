@@ -223,6 +223,10 @@ class Show {
     get bads() { return this.#bads }
     get misses() { return this.#misses }
     get longestCombo() { return this.#longestCombo }
+
+    toString() {
+        return this.#show
+    }
 }
 
 export default class ShowDatabase {

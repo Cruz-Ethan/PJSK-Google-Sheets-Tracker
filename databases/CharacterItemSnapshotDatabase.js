@@ -41,6 +41,10 @@ class CharacterItemSnapshot {
     get characterAreaItem() { return this.#characterAreaItem }
     get time() { return this.#time }
     get talentBoostPercentage() { return this.#talentBoostPercentage }
+
+    toString() {
+        return `${this.#characterAreaItem} (${this.#time})`
+    }
 }
 
 export default class CharacterItemSnapshotDatabase {

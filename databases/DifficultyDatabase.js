@@ -22,6 +22,10 @@ class Difficulty {
     }
 
     get difficulty() { return this.#difficulty }
+
+    toString() {
+        return this.#difficulty
+    }
 }
 
 export default class DifficultyDatabase {

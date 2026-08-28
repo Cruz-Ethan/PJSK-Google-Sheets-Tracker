@@ -28,6 +28,10 @@ class UnitAreaItem {
 
     get unitAreaItem() { return this.#unitAreaItem }
     get supportUnit() { return this.#supportUnit }
+
+    toString() {
+        return this.#unitAreaItem
+    }
 }
 
 export default class UnitAreaItemDatabase {

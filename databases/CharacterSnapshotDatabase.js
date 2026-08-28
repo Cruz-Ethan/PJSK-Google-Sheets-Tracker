@@ -40,6 +40,10 @@ class CharacterSnapshot {
     get character() { return this.#character }
     get time() { return this.#time }
     get rank() { return this.#rank }
+
+    toString() {
+        return `${this.#character} (${this.#time})`
+    }
 }
 
 export default class CharacterSnapshotDatabase {

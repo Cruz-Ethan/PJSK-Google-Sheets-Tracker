@@ -185,6 +185,10 @@ class CardSnapshot {
     get talent() { return this.#talent }
     get skillLevel() { return this.#skillLevel }
     get isTrained() { return this.#isTrained }
+
+    toString() {
+        return `${this.#card} (${this.#time})`
+    }
 }
 
 export default class CardSnapshotDatabase {

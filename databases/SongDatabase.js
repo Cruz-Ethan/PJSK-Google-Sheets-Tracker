@@ -27,6 +27,10 @@ class Song {
 
     get song() { return this.#song }
     get imageUrl() { return this.#imageUrl }
+
+    toString() {
+        return this.#song
+    }
 }
 
 export default class SongDatabase {

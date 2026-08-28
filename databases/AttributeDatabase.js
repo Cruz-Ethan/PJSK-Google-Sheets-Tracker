@@ -23,6 +23,10 @@ class Attribute {
     get attribute() {
         return this.#attribute
     }
+
+    toString() {
+        return this.#attribute
+    }
 }
 
 export default class AttributeDatabase {

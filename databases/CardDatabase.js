@@ -104,6 +104,10 @@ class Card {
     get rarity() { return this.#rarity }
     get untrainedUrl() { return this.#untrainedUrl }
     get trainedUrl() { return this.#trainedUrl }
+
+    toString() {
+        return this.#card
+    }
 }
 
 export default class CardDatabase {

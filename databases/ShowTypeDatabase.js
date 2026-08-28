@@ -22,6 +22,10 @@ class ShowType {
     }
 
     get showType() { return this.#showType }
+
+    toString() {
+        return this.#showType
+    }
 }
 
 export default class ShowTypeDatabase {

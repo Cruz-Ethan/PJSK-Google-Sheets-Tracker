@@ -41,6 +41,10 @@ class UnitItemSnapshot {
     get unitAreaItem() { return this.#unitAreaItem }
     get time() { return this.#time }
     get talentBoostPercentage() { return this.#talentBoostPercentage }
+
+    toString() {
+        return `${this.unitAreaItem} (${this.#time})`
+    }
 }
 
 export default class UnitItemSnapshotDatabase {

@@ -22,6 +22,10 @@ class SupportUnit {
     }
 
     get supportUnit() { return this.#supportUnit }
+
+    toString() {
+        return this.#supportUnit
+    }
 }
 
 export default class SupportUnitDatabase {

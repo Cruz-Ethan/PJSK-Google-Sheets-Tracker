@@ -22,6 +22,10 @@ class SkillType {
     }
 
     get skillType() { return this.#skillType }
+
+    toString() {
+        return this.#skillType
+    }
 }
 
 export default class SkillTypeDatabase {

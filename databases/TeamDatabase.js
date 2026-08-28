@@ -23,6 +23,9 @@ class Team {
     ) {
         if(!team) throw new MissingValueError('Team', 'team', team)
         if(!leader) throw new MissingValueError('Team', 'leader', team)
+        if(!subleader && member1) throw new MissingValueError('Team', 'subleader', team)
+        if(!member1 && member2) throw new MissingValueError('Team', 'member1', team)
+        if(!member2 && member3) throw new MissingValueError('Team', 'member2', team)
 
         this.#team = team
         this.#leader = leader
@@ -47,6 +50,10 @@ class Team {
     get member1() { return this.#member1 }
     get member2() { return this.#member2 }
     get member3() { return this.#member3 }
+
+    toString() {
+        return this.#team
+    }
 }
 
 export default class TeamDatabase {
@@ -69,11 +76,11 @@ export default class TeamDatabase {
             const rows = await database.getObjects(TeamDatabase.#sheetName)
             rows.forEach(row => new Team(
                 row.c[0].v,
-                row.c[1].v ? TeamDatabase.#cardDatabase.getCard(row.c[1].v) : null,
-                row.c[2].v ? TeamDatabase.#cardDatabase.getCard(row.c[2].v) : null,
-                row.c[3].v ? TeamDatabase.#cardDatabase.getCard(row.c[3].v) : null,
-                row.c[4].v ? TeamDatabase.#cardDatabase.getCard(row.c[4].v) : null,
-                row.c[5].v ? TeamDatabase.#cardDatabase.getCard(row.c[5].v) : null,
+                row.c[1] && row.c[1].v ? TeamDatabase.#cardDatabase.getCard(row.c[1].v) : null,
+                row.c[2] && row.c[2].v ? TeamDatabase.#cardDatabase.getCard(row.c[2].v) : null,
+                row.c[3] && row.c[3].v ? TeamDatabase.#cardDatabase.getCard(row.c[3].v) : null,
+                row.c[4] && row.c[4].v ? TeamDatabase.#cardDatabase.getCard(row.c[4].v) : null,
+                row.c[5] && row.c[5].v ? TeamDatabase.#cardDatabase.getCard(row.c[5].v) : null,
             ))
         }
         return TeamDatabase.#instance

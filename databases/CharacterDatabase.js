@@ -39,6 +39,10 @@ class Character {
     get supportUnit() {
         return this.#supportUnit
     }
+
+    toString() {
+        return this.#character
+    }
 }
 
 export default class CharacterDatabase {

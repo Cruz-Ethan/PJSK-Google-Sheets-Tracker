@@ -1,4 +1,7 @@
+import MissingReferenceError from "../errors/MissingReferenceError.js"
+import MissingValueError from "../errors/MissingValueError.js"
 import DatabaseHandler from "./DatabaseHandler.js"
+import SupportUnitDatabase from "./SupportUnitDatabase.js"
 
 class Character {
     static #characters = []
@@ -7,18 +10,22 @@ class Character {
     #supportUnit
 
     constructor(character, imageUrl, supportUnit) {
+        if(!character) throw new MissingValueError('Character', 'character', character)
+        if(!imageUrl) throw new MissingValueError('Character', 'imageUrl', character)
+        if(!supportUnit) throw new MissingValueError('Character', 'supportUnit', character)
+
         this.#character = character
         this.#imageUrl = imageUrl
         this.#supportUnit = supportUnit
 
-        if(!Character.characters) {
-            Character.characters = []
+        if(!Character.#characters) {
+            Character.#characters = []
         }
-        Character.characters.push(this)
+        Character.#characters.push(this)
     }
 
     static getCharacters() {
-        return Character.characters
+        return Character.#characters
     }
 
     get character() {
@@ -38,17 +45,27 @@ export default class CharacterDatabase {
     static #instance
     static #sheetName = 'characters'
 
+    static #supportUnitDatabase
+
     static async getInstance(googleSheetsID) {
-        if(!CharacterDatabase.instance) {
-            if(!CharacterDatabase.sheetName) {
-                CharacterDatabase.sheetName = 'characters'
+        if(!CharacterDatabase.#instance) {
+            if(!CharacterDatabase.#sheetName) {
+                CharacterDatabase.#sheetName = 'characters'
             }
-            CharacterDatabase.instance = new CharacterDatabase()
+            if(!CharacterDatabase.#supportUnitDatabase) {
+                CharacterDatabase.#supportUnitDatabase = await SupportUnitDatabase.getInstance(googleSheetsID)
+            }
+
+            CharacterDatabase.#instance = new CharacterDatabase()
             const database = DatabaseHandler.getDatabase(googleSheetsID)
-            const rows = await database.getObjects(CharacterDatabase.sheetName)
-            rows.forEach(row => new Character(row.c[0].v, row.c[1].v, row.c[2].v))
+            const rows = await database.getObjects(CharacterDatabase.#sheetName)
+            rows.forEach(row => new Character(
+                row.c[0].v,
+                row.c[1].v, 
+                CharacterDatabase.#supportUnitDatabase.getSupportUnit(row.c[2].v)
+            ))
         }
-        return CharacterDatabase.instance
+        return CharacterDatabase.#instance
     }
 
     getAllCharacters() {
@@ -57,6 +74,8 @@ export default class CharacterDatabase {
 
     getCharacter(characterName) {
         const characters = this.getAllCharacters()
-        return characters.find(character => character.character === characterName)
+        const character = characters.find(character => character.character === characterName)
+        if(!character) throw new MissingReferenceError('Character', characterName)
+        return character
     }
 }

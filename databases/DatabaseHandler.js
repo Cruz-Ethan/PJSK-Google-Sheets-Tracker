@@ -1,10 +1,12 @@
+import InvalidIDError from "../errors/InvalidIDError.js"
+
 export default class DatabaseHandler {
     static #database
 
     static getDatabase(googleSheetsID) {
-        if(DatabaseHandler.database) return DatabaseHandler.database
-        DatabaseHandler.database = new Database(googleSheetsID)
-        return DatabaseHandler.database
+        if(DatabaseHandler.#database) return DatabaseHandler.#database
+        DatabaseHandler.#database = new Database(googleSheetsID)
+        return DatabaseHandler.#database
     }
 }
 
@@ -16,6 +18,9 @@ class Database {
     async getObjects(sheetName, shouldCutFirst=true) {
         const url = `https://docs.google.com/spreadsheets/d/${this.googleSheetsID}/gviz/tq?sheet=${sheetName}`
         const response = await fetch(url)
+
+        if(!response.ok) throw new InvalidIDError(this.googleSheetsID)
+
         const text = await response.text()
         const parsedText = text.substring(47).slice(0, -2)
         const table = JSON.parse(parsedText).table

@@ -1,5 +1,7 @@
 import DatabaseHandler from "./DatabaseHandler.js"
 import CharacterAreaItemDatabase from "./CharacterAreaItemDatabase.js"
+import InvalidValueError from "../errors/InvalidValueError.js"
+import MissingValueError from "../errors/MissingValueError.js"
 import { getDate } from "../utils/format.js"
 
 class CharacterItemSnapshot {
@@ -10,18 +12,30 @@ class CharacterItemSnapshot {
     #talentBoostPercentage
 
     constructor(characterAreaItem, timeString, talentBoost) {
+        if(!characterAreaItem) throw new MissingValueError('CharacterItemSnapshot', 'characterAreaItem', characterAreaItem, timeString)
+        if(!timeString) throw new MissingValueError('CharacterItemSnapshot', 'timeString', characterAreaItem, timeString)
+        if(!talentBoost) throw new MissingValueError('CharacterItemSnapshot', 'talentBoost', characterAreaItem, timeString)
+
+        if(talentBoost < 0) throw new InvalidValueError(
+            CharacterItemSnapshot,
+            'talentBoost',
+            talentBoost,
+            'Talent boost must be positive.',
+            characterAreaItem, timeString
+        )
+
         this.#characterAreaItem = characterAreaItem
         this.#time = getDate(timeString)
         this.#talentBoostPercentage = talentBoost * 100
 
-        if(!CharacterItemSnapshot.characterItemSnapshots) {
-            CharacterItemSnapshot.characterItemSnapshots = []
+        if(!CharacterItemSnapshot.#characterItemSnapshots) {
+            CharacterItemSnapshot.#characterItemSnapshots = []
         }
-        CharacterItemSnapshot.characterItemSnapshots.push(this)
+        CharacterItemSnapshot.#characterItemSnapshots.push(this)
     }
 
     static getCharacterItemSnapshots() {
-        return CharacterItemSnapshot.characterItemSnapshots
+        return CharacterItemSnapshot.#characterItemSnapshots
     }
 
     get characterAreaItem() { return this.#characterAreaItem }
@@ -36,24 +50,24 @@ export default class CharacterItemSnapshotDatabase {
     static #characterAreaItemDatabase
 
     static async getInstance(googleSheetsID) {
-        if(!CharacterItemSnapshotDatabase.instance) {
-            if(!CharacterItemSnapshotDatabase.sheetName) {
-                CharacterItemSnapshotDatabase.sheetName = 'character_item_snapshots'
+        if(!CharacterItemSnapshotDatabase.#instance) {
+            if(!CharacterItemSnapshotDatabase.#sheetName) {
+                CharacterItemSnapshotDatabase.#sheetName = 'character_item_snapshots'
             }
-            if(!CharacterItemSnapshotDatabase.characterAreaItemDatabase) {
-                CharacterItemSnapshotDatabase.characterAreaItemDatabase = await CharacterAreaItemDatabase.getInstance(googleSheetsID)
+            if(!CharacterItemSnapshotDatabase.#characterAreaItemDatabase) {
+                CharacterItemSnapshotDatabase.#characterAreaItemDatabase = await CharacterAreaItemDatabase.getInstance(googleSheetsID)
             }
 
-            CharacterItemSnapshotDatabase.instance = new CharacterItemSnapshotDatabase()
+            CharacterItemSnapshotDatabase.#instance = new CharacterItemSnapshotDatabase()
             const database = DatabaseHandler.getDatabase(googleSheetsID)
-            const rows = await database.getObjects(CharacterItemSnapshotDatabase.sheetName, false)
+            const rows = await database.getObjects(CharacterItemSnapshotDatabase.#sheetName, false)
             rows.forEach(row => new CharacterItemSnapshot(
-                CharacterItemSnapshotDatabase.characterAreaItemDatabase.getCharacterAreaItem(row.c[0].v),
+                CharacterItemSnapshotDatabase.#characterAreaItemDatabase.getCharacterAreaItem(row.c[0].v),
                 row.c[1].v,
                 row.c[2].v
             ))
         }
-        return CharacterItemSnapshotDatabase.instance
+        return CharacterItemSnapshotDatabase.#instance
     }
 
     getAllCharacterItemSnapshots() {

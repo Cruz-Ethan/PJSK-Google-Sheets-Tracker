@@ -1,3 +1,5 @@
+import MissingReferenceError from "../errors/MissingReferenceError.js"
+import MissingValueError from "../errors/MissingValueError.js"
 import DatabaseHandler from "./DatabaseHandler.js"
 
 class Song {
@@ -7,17 +9,20 @@ class Song {
     #imageUrl
 
     constructor(song, imageUrl) {
+        if(!song) throw new MissingValueError('Song', 'song', song)
+        if(!imageUrl) throw new MissingValueError('Song', 'imageUrl', song)
+
         this.#song = song
         this.#imageUrl = imageUrl
         
-        if(!Song.songs) {
-            Song.songs = []
+        if(!Song.#songs) {
+            Song.#songs = []
         }
-        Song.songs.push(this)
+        Song.#songs.push(this)
     }
 
     static getSongs() {
-        return Song.songs
+        return Song.#songs
     }
 
     get song() { return this.#song }
@@ -29,16 +34,16 @@ export default class SongDatabase {
     static #sheetName = 'songs'
 
     static async getInstance(googleSheetsID) {
-        if(!SongDatabase.instance) {
-            if(!SongDatabase.sheetName) {
-                SongDatabase.sheetName = 'songs'
+        if(!SongDatabase.#instance) {
+            if(!SongDatabase.#sheetName) {
+                SongDatabase.#sheetName = 'songs'
             }
-            SongDatabase.instance = new SongDatabase()
+            SongDatabase.#instance = new SongDatabase()
             const database = DatabaseHandler.getDatabase(googleSheetsID)
-            const rows = await database.getObjects(SongDatabase.sheetName)
+            const rows = await database.getObjects(SongDatabase.#sheetName)
             rows.forEach(row => new Song(row.c[0].v, row.c[1].v))
         }
-        return SongDatabase.instance
+        return SongDatabase.#instance
     }
 
     getAllSongs() {
@@ -47,6 +52,8 @@ export default class SongDatabase {
 
     getSong(songName) {
         const songs = this.getAllSongs()
-        return songs.find(song => song.song === songName)
+        const song = songs.find(song => song.song === songName)
+        if(!song) throw new MissingReferenceError('Song', songName)
+        return song
     }
 }

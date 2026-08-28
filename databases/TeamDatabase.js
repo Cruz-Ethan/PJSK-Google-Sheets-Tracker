@@ -1,5 +1,7 @@
 import DatabaseHandler from "./DatabaseHandler.js"
 import CardDatabase from "./CardDatabase.js"
+import MissingReferenceError from "../errors/MissingReferenceError.js"
+import MissingValueError from "../errors/MissingValueError.js"
 
 class Team {
     static #teams = []
@@ -19,6 +21,9 @@ class Team {
         member2,
         member3
     ) {
+        if(!team) throw new MissingValueError('Team', 'team', team)
+        if(!leader) throw new MissingValueError('Team', 'leader', team)
+
         this.#team = team
         this.#leader = leader
         this.#subleader = subleader
@@ -26,14 +31,14 @@ class Team {
         this.#member2 = member2
         this.#member3 = member3
 
-        if(!Team.teams) {
-            Team.teams = []
+        if(!Team.#teams) {
+            Team.#teams = []
         }
-        Team.teams.push(this)
+        Team.#teams.push(this)
     }
 
     static getTeams() {
-        return Team.teams
+        return Team.#teams
     }
 
     get team() { return this.#team }
@@ -51,27 +56,27 @@ export default class TeamDatabase {
     static #cardDatabase
 
     static async getInstance(googleSheetsID) {
-        if(!TeamDatabase.instance) {
-            if(!TeamDatabase.sheetName) {
-                TeamDatabase.sheetName = 'teams'
+        if(!TeamDatabase.#instance) {
+            if(!TeamDatabase.#sheetName) {
+                TeamDatabase.#sheetName = 'teams'
             }
-            if(!TeamDatabase.cardDatabase) {
-                TeamDatabase.cardDatabase = await CardDatabase.getInstance(googleSheetsID)
+            if(!TeamDatabase.#cardDatabase) {
+                TeamDatabase.#cardDatabase = await CardDatabase.getInstance(googleSheetsID)
             }
 
-            TeamDatabase.instance = new TeamDatabase()
+            TeamDatabase.#instance = new TeamDatabase()
             const database = DatabaseHandler.getDatabase(googleSheetsID)
-            const rows = await database.getObjects(TeamDatabase.sheetName)
+            const rows = await database.getObjects(TeamDatabase.#sheetName)
             rows.forEach(row => new Team(
                 row.c[0].v,
-                TeamDatabase.cardDatabase.getCard(row.c[1].v),
-                TeamDatabase.cardDatabase.getCard(row.c[2].v),
-                TeamDatabase.cardDatabase.getCard(row.c[3].v),
-                TeamDatabase.cardDatabase.getCard(row.c[4].v),
-                TeamDatabase.cardDatabase.getCard(row.c[5].v),
+                row.c[1].v ? TeamDatabase.#cardDatabase.getCard(row.c[1].v) : null,
+                row.c[2].v ? TeamDatabase.#cardDatabase.getCard(row.c[2].v) : null,
+                row.c[3].v ? TeamDatabase.#cardDatabase.getCard(row.c[3].v) : null,
+                row.c[4].v ? TeamDatabase.#cardDatabase.getCard(row.c[4].v) : null,
+                row.c[5].v ? TeamDatabase.#cardDatabase.getCard(row.c[5].v) : null,
             ))
         }
-        return TeamDatabase.instance
+        return TeamDatabase.#instance
     }
 
     getAllTeams() {
@@ -80,6 +85,8 @@ export default class TeamDatabase {
 
     getTeam(teamName) {
         const teams = this.getAllTeams()
-        return teams.find(team => team.team === teamName)
+        const team = teams.find(team => team.team === teamName)
+        if(!team) throw new MissingReferenceError('Team', teamName)
+        return team
     }
 }

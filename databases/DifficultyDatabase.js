@@ -1,3 +1,5 @@
+import MissingReferenceError from "../errors/MissingReferenceError.js"
+import MissingValueError from "../errors/MissingValueError.js"
 import DatabaseHandler from "./DatabaseHandler.js"
 
 class Difficulty {
@@ -6,15 +8,17 @@ class Difficulty {
     #difficulty
 
     constructor(difficulty) {
+        if(!difficulty) throw new MissingValueError('Difficulty', 'difficulty', difficulty)
+
         this.#difficulty = difficulty
-        if(!Difficulty.difficulties) {
-            Difficulty.difficulties = []
+        if(!Difficulty.#difficulties) {
+            Difficulty.#difficulties = []
         }
-        Difficulty.difficulties.push(this)
+        Difficulty.#difficulties.push(this)
     }
 
     static getDifficulties() {
-        return Difficulty.difficulties
+        return Difficulty.#difficulties
     }
 
     get difficulty() { return this.#difficulty }
@@ -25,16 +29,16 @@ export default class DifficultyDatabase {
     static #sheetName = 'difficulties'
 
     static async getInstance(googleSheetsID) {
-        if(!DifficultyDatabase.instance) {
-            if(!DifficultyDatabase.sheetName) {
-                DifficultyDatabase.sheetName = 'difficulties'
+        if(!DifficultyDatabase.#instance) {
+            if(!DifficultyDatabase.#sheetName) {
+                DifficultyDatabase.#sheetName = 'difficulties'
             }
-            DifficultyDatabase.instance = new DifficultyDatabase()
+            DifficultyDatabase.#instance = new DifficultyDatabase()
             const database = DatabaseHandler.getDatabase(googleSheetsID)
-            const rows = await database.getObjects(DifficultyDatabase.sheetName)
+            const rows = await database.getObjects(DifficultyDatabase.#sheetName)
             rows.forEach(row => new Difficulty(row.c[0].v))
         }
-        return DifficultyDatabase.instance
+        return DifficultyDatabase.#instance
     }
 
     getAllDifficulties() {
@@ -43,6 +47,8 @@ export default class DifficultyDatabase {
 
     getDifficulty(difficultyName) {
         const difficulties = this.getAllDifficulties()
-        return difficulties.find(difficulty => difficulty.difficulty === difficultyName)
+        const difficulty = difficulties.find(difficulty => difficulty.difficulty === difficultyName)
+        if(!difficulty) throw new MissingReferenceError('Difficulty', difficultyName)
+        return difficulty
     }
 }

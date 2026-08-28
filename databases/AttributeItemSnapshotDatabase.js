@@ -1,6 +1,8 @@
 import DatabaseHandler from "./DatabaseHandler.js"
 import AttributeAreaItemDatabase from "./AttributeAreaItemDatabase.js"
 import { getDate } from "../utils/format.js"
+import MissingValueError from "../errors/MissingValueError.js"
+import InvalidValueError from "../errors/InvalidValueError.js"
 
 class AttributeItemSnapshot {
     static #attributeItemSnapshots = []
@@ -9,18 +11,30 @@ class AttributeItemSnapshot {
     #talentBoostPercentage
 
     constructor(attributeAreaItem, timeString, talentBoost) {
+        if(!attributeAreaItem) throw new MissingValueError('AttributeItemSnapshot', 'attributeAreaItem', attributeAreaItem, timeString)
+        if(!timeString) throw new MissingValueError('AttributeItemSnapshot', 'timeString', attributeAreaItem, timeString)
+        if(!talentBoost) throw new MissingValueError('AttributeItemSnapshot', 'talentBoost', attributeAreaItem, timeString)
+
+        if(talentBoost < 0) throw new InvalidValueError(
+            AttributeItemSnapshot,
+            'talentBoost',
+            talentBoost,
+            'Talent boost must be positive.',
+            attributeAreaItem, timeString
+        )
+
         this.#attributeAreaItem = attributeAreaItem
         this.#time = getDate(timeString)
         this.#talentBoostPercentage = talentBoost * 100
 
-        if(!AttributeItemSnapshot.attributeItemSnapshots) {
-            AttributeItemSnapshot.attributeItemSnapshots = []
+        if(!AttributeItemSnapshot.#attributeItemSnapshots) {
+            AttributeItemSnapshot.#attributeItemSnapshots = []
         }
-        AttributeItemSnapshot.attributeItemSnapshots.push(this)
+        AttributeItemSnapshot.#attributeItemSnapshots.push(this)
     }
 
     static getAttributeItemSnapshots() {
-        return AttributeItemSnapshot.attributeItemSnapshots
+        return AttributeItemSnapshot.#attributeItemSnapshots
     }
 
     get attributeAreaItem() {
@@ -43,24 +57,24 @@ export default class AttributeItemSnapshotDatabase {
     static #attributeAreaItemDatabase
 
     static async getInstance(googleSheetsID) {
-        if(!AttributeItemSnapshotDatabase.instance) {
-            if(!AttributeItemSnapshotDatabase.sheetName) {
-                AttributeItemSnapshotDatabase.sheetName = 'attribute_item_snapshots'
+        if(!AttributeItemSnapshotDatabase.#instance) {
+            if(!AttributeItemSnapshotDatabase.#sheetName) {
+                AttributeItemSnapshotDatabase.#sheetName = 'attribute_item_snapshots'
             }
-            if(!AttributeItemSnapshotDatabase.attributeAreaItemDatabase) {
-                AttributeItemSnapshotDatabase.attributeAreaItemDatabase = await AttributeAreaItemDatabase.getInstance(googleSheetsID)
+            if(!AttributeItemSnapshotDatabase.#attributeAreaItemDatabase) {
+                AttributeItemSnapshotDatabase.#attributeAreaItemDatabase = await AttributeAreaItemDatabase.getInstance(googleSheetsID)
             }
 
-            AttributeItemSnapshotDatabase.instance = new AttributeItemSnapshotDatabase()
+            AttributeItemSnapshotDatabase.#instance = new AttributeItemSnapshotDatabase()
             const database = DatabaseHandler.getDatabase(googleSheetsID)
-            const rows = await database.getObjects(AttributeItemSnapshotDatabase.sheetName, false)
+            const rows = await database.getObjects(AttributeItemSnapshotDatabase.#sheetName, false)
             rows.forEach(row => new AttributeItemSnapshot(
-                AttributeItemSnapshotDatabase.attributeAreaItemDatabase.getAttributeAreaItem(row.c[0].v),
+                AttributeItemSnapshotDatabase.#attributeAreaItemDatabase.getAttributeAreaItem(row.c[0].v),
                 row.c[1].v,
                 row.c[2].v
             ))
         }
-        return AttributeItemSnapshotDatabase.instance
+        return AttributeItemSnapshotDatabase.#instance
     }
 
     getAllAttributeItemSnapshots() {

@@ -22,7 +22,7 @@ allUnits.forEach(unit => {
     title.classList.add("text-2xl", "font-semibold", "mb-3")
     section.appendChild(title)
 
-    const unitCharacters = allCharacters.filter(character => character.supportUnit === unit.supportUnit)
+    const unitCharacters = allCharacters.filter(character => character.supportUnit === unit)
 
     const list = document.createElement('ul')
     list.classList.add("grid", `grid-cols-6`, "gap-4")

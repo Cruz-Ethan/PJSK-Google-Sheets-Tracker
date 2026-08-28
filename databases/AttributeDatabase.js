@@ -1,19 +1,23 @@
 import DatabaseHandler from "./DatabaseHandler.js"
+import MissingValueError from "../errors/MissingValueError.js"
+import MissingReferenceError from "../errors/MissingReferenceError.js"
 
 class Attribute {
     static #attributes = []
     #attribute
 
     constructor(attribute) {
+        if(!attribute) throw new MissingValueError('Attribute', 'attribute', attribute)
+        
         this.#attribute = attribute
-        if(!Attribute.attributes) {
-            Attribute.attributes = []
+        if(!Attribute.#attributes) {
+            Attribute.#attributes = []
         }
-        Attribute.attributes.push(this)
+        Attribute.#attributes.push(this)
     }
 
     static getAttributes() {
-        return Attribute.attributes
+        return Attribute.#attributes
     }
 
     get attribute() {
@@ -26,16 +30,16 @@ export default class AttributeDatabase {
     static #sheetName = 'attributes'
 
     static async getInstance(googleSheetsID) {
-        if(!AttributeDatabase.instance) {
-            if(!AttributeDatabase.sheetName) {
-                AttributeDatabase.sheetName = 'attributes'
+        if(!AttributeDatabase.#instance) {
+            if(!AttributeDatabase.#sheetName) {
+                AttributeDatabase.#sheetName = 'attributes'
             }
-            AttributeDatabase.instance = new AttributeDatabase()
+            AttributeDatabase.#instance = new AttributeDatabase()
             const database = DatabaseHandler.getDatabase(googleSheetsID)
-            const rows = await database.getObjects(AttributeDatabase.sheetName)
+            const rows = await database.getObjects(AttributeDatabase.#sheetName)
             rows.forEach(row => new Attribute(row.c[0].v))
         }
-        return AttributeDatabase.instance
+        return AttributeDatabase.#instance
     }
 
     getAllAttributes() {
@@ -44,6 +48,8 @@ export default class AttributeDatabase {
 
     getAttribute(attributeName) {
         const attributes = this.getAllAttributes()
-        return attributes.find(attribute => attribute.attribute === attributeName)
+        const attribute = attributes.find(attribute => attribute.attribute === attributeName)
+        if(!attribute) throw new MissingReferenceError('Attribute', attributeName)
+        return attribute
     }
 }

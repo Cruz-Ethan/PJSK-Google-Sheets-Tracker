@@ -45,6 +45,10 @@ class UnitItemSnapshot {
     toString() {
         return `${this.unitAreaItem} (${this.#time})`
     }
+
+    matches(unitAreaItem) {
+        return this.#unitAreaItem === unitAreaItem
+    }
 }
 
 export default class UnitItemSnapshotDatabase {

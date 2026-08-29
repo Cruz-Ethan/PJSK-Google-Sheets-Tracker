@@ -44,6 +44,10 @@ class CharacterSnapshot {
     toString() {
         return `${this.#character} (${this.#time})`
     }
+
+    matches(character) {
+        return this.#character === character
+    }
 }
 
 export default class CharacterSnapshotDatabase {

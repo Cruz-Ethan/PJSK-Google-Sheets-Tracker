@@ -36,6 +36,10 @@ class AttributeAreaItem {
     toString() {
         return this.#attributeAreaItem
     }
+
+    isApplicableTo(card) {
+        return this.#attribute === card.attribute
+    }
 }
 
 export default class AttributeAreaItemDatabase {
@@ -55,7 +59,7 @@ export default class AttributeAreaItemDatabase {
 
             AttributeAreaItemDatabase.#instance = new AttributeAreaItemDatabase()
             const database = DatabaseHandler.getDatabase(googleSheetsID)
-            const rows = await database.getObjects(AttributeAreaItemDatabase.sheetName)
+            const rows = await database.getObjects(AttributeAreaItemDatabase.#sheetName)
             rows.forEach(row => new AttributeAreaItem(
                 row.c[0].v,
                 AttributeAreaItemDatabase.#attributeDatabase.getAttribute(row.c[1].v)

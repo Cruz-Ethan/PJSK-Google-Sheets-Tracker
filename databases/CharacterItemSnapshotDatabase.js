@@ -45,6 +45,10 @@ class CharacterItemSnapshot {
     toString() {
         return `${this.#characterAreaItem} (${this.#time})`
     }
+
+    matches(characterAreaItem) {
+        return this.#characterAreaItem === characterAreaItem
+    }
 }
 
 export default class CharacterItemSnapshotDatabase {

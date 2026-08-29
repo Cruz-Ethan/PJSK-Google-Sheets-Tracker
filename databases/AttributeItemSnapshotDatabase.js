@@ -45,12 +45,16 @@ class AttributeItemSnapshot {
         return this.#time
     }
 
-    get talentBoost() {
+    get talentBoostPercentage() {
         return this.#talentBoostPercentage
     }
 
     toString() {
         return `${this.#attributeAreaItem} (${this.#time})`
+    }
+
+    matches(attributeAreaItem) {
+        return this.#attributeAreaItem === attributeAreaItem
     }
 }
 

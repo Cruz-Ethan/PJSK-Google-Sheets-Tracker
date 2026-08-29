@@ -189,6 +189,10 @@ class CardSnapshot {
     toString() {
         return `${this.#card} (${this.#time})`
     }
+
+    matches(card) {
+        return this.#card === card
+    }
 }
 
 export default class CardSnapshotDatabase {

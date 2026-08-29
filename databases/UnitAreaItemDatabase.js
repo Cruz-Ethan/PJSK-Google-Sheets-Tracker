@@ -32,6 +32,10 @@ class UnitAreaItem {
     toString() {
         return this.#unitAreaItem
     }
+
+    isApplicableTo(card) {
+        return this.#supportUnit === card.supportUnit
+    }
 }
 
 export default class UnitAreaItemDatabase {

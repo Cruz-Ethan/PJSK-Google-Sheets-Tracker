@@ -32,6 +32,10 @@ class CharacterAreaItem {
     toString() {
         return this.#characterAreaItem
     }
+
+    isApplicableTo(card) {
+        return this.#character === card.character
+    }
 }
 
 export default class CharacterAreaItemDatabase {

@@ -1,5 +1,5 @@
-import SongDatabase from "../databases/SongDatabase.js"
-import DifficultyDatabase from "../databases/DifficultyDatabase.js"
+import SongDatabase from "../databases/songs/SongDatabase.js"
+import DifficultyDatabase from "../databases/songs/DifficultyDatabase.js"
 import { getSongCharts, getTimesPlayed } from "../utils/songInfo.js"
 import { formatSongTitle } from "../utils/format.js"
 

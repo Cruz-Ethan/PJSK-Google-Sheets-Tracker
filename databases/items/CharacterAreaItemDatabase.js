@@ -1,7 +1,7 @@
-import DatabaseHandler from "./DatabaseHandler.js"
-import CharacterDatabase from "./CharacterDatabase.js"
-import MissingReferenceError from "../errors/MissingReferenceError.js"
-import MissingValueError from "../errors/MissingValueError.js"
+import DatabaseHandler from "../generics/DatabaseHandler.js"
+import CharacterDatabase from "../cards/CharacterDatabase.js"
+import MissingReferenceError from "../../errors/MissingReferenceError.js"
+import MissingValueError from "../../errors/MissingValueError.js"
 
 class CharacterAreaItem {
     static #characterAreaItems = []

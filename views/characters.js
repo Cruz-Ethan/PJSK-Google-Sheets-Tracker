@@ -1,5 +1,5 @@
-import CharacterDatabase from "../databases/CharacterDatabase.js";
-import SupportUnitDatabase from "../databases/SupportUnitDatabase.js";
+import CharacterDatabase from "../databases/cards/CharacterDatabase.js";
+import SupportUnitDatabase from "../databases/cards/SupportUnitDatabase.js";
 import { getRank } from "../utils/characterInfo.js";
 
 const pjskGoogleSheetsID = localStorage.getItem('pjskGoogleSheetsID')

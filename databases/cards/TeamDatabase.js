@@ -1,7 +1,7 @@
-import DatabaseHandler from "./DatabaseHandler.js"
+import DatabaseHandler from "../generics/DatabaseHandler.js"
 import CardDatabase from "./CardDatabase.js"
-import MissingReferenceError from "../errors/MissingReferenceError.js"
-import MissingValueError from "../errors/MissingValueError.js"
+import MissingReferenceError from "../../errors/MissingReferenceError.js"
+import MissingValueError from "../../errors/MissingValueError.js"
 
 class Team {
     static #teams = []

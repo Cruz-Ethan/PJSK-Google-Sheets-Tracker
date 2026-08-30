@@ -1,4 +1,4 @@
-import ShowDatabase from "../databases/ShowDatabase.js";
+import ShowDatabase from "../databases/songs/ShowDatabase.js";
 import { simpleDate, formatAccuracy } from "../utils/format.js";
 import { getScoreColor, getDifficultyColor, getRankColor,  getLevelColor } from "../utils/colors.js";
 import { getShowLevel } from "../utils/showInfo.js";

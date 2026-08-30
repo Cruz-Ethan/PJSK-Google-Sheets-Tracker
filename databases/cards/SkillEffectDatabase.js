@@ -1,9 +1,9 @@
-import DatabaseHandler from "./DatabaseHandler.js"
+import DatabaseHandler from "../generics/DatabaseHandler.js"
 import SkillTypeDatabase from "./SkillTypeDatabase.js"
 import RarityDatabase from "./RarityDatabase.js"
-import MissingReferenceError from "../errors/MissingReferenceError.js"
-import MissingValueError from "../errors/MissingValueError.js"
-import InvalidValueError from "../errors/InvalidValueError.js"
+import MissingReferenceError from "../../errors/MissingReferenceError.js"
+import MissingValueError from "../../errors/MissingValueError.js"
+import InvalidValueError from "../../errors/InvalidValueError.js"
 
 class SkillEffect {
     static #skillEffects = []

@@ -1,6 +1,5 @@
-
-import ChartDatabase from "../databases/ChartDatabase.js"
-import ShowDatabase from "../databases/ShowDatabase.js"
+import ChartDatabase from "../databases/songs/ChartDatabase.js"
+import ShowDatabase from "../databases/songs/ShowDatabase.js"
 
 const pjskGoogleSheetsID = localStorage.getItem('pjskGoogleSheetsID')
 if (!pjskGoogleSheetsID) window.location.href = 'index.html'

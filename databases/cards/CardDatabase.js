@@ -1,12 +1,12 @@
-import DatabaseHandler from "./DatabaseHandler.js"
+import DatabaseHandler from "../generics/DatabaseHandler.js"
 import CharacterDatabase from "./CharacterDatabase.js"
 import SupportUnitDatabase from "./SupportUnitDatabase.js"
 import AttributeDatabase from "./AttributeDatabase.js"
 import SkillTypeDatabase from "./SkillTypeDatabase.js"
 import RarityDatabase from "./RarityDatabase.js"
-import MissingValueError from "../errors/MissingValueError.js"
-import MissingReferenceError from "../errors/MissingReferenceError.js"
-import InvalidValueError from "../errors/InvalidValueError.js"
+import MissingValueError from "../../errors/MissingValueError.js"
+import MissingReferenceError from "../../errors/MissingReferenceError.js"
+import InvalidValueError from "../../errors/InvalidValueError.js"
 
 class Card {
     static #cards = []

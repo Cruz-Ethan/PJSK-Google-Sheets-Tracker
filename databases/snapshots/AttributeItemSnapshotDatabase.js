@@ -1,8 +1,8 @@
-import DatabaseHandler from "./DatabaseHandler.js"
-import AttributeAreaItemDatabase from "./AttributeAreaItemDatabase.js"
-import { getDate } from "../utils/format.js"
-import MissingValueError from "../errors/MissingValueError.js"
-import InvalidValueError from "../errors/InvalidValueError.js"
+import DatabaseHandler from "../generics/DatabaseHandler.js"
+import AttributeAreaItemDatabase from "../items/AttributeAreaItemDatabase.js"
+import { getDate } from "../../utils/format.js"
+import MissingValueError from "../../errors/MissingValueError.js"
+import InvalidValueError from "../../errors/InvalidValueError.js"
 
 class AttributeItemSnapshot {
     static #attributeItemSnapshots = []

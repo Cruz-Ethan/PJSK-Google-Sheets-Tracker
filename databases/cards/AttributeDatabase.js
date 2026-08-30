@@ -1,6 +1,6 @@
-import DatabaseHandler from "./DatabaseHandler.js"
-import MissingValueError from "../errors/MissingValueError.js"
-import MissingReferenceError from "../errors/MissingReferenceError.js"
+import DatabaseHandler from "../generics/DatabaseHandler.js"
+import MissingValueError from "../../errors/MissingValueError.js"
+import MissingReferenceError from "../../errors/MissingReferenceError.js"
 
 class Attribute {
     static #attributes = []

@@ -1,13 +1,13 @@
-import DatabaseHandler from "./DatabaseHandler.js"
+import DatabaseHandler from "../generics/DatabaseHandler.js"
 import SongDatabase from "./SongDatabase.js"
 import DifficultyDatabase from "./DifficultyDatabase.js"
 import ShowTypeDatabase from "./ShowTypeDatabase.js"
-import TeamDatabase from "./TeamDatabase.js"
-import { getDate } from "../utils/format.js"
-import { getChartLength } from "../utils/chartInfo.js"
-import MissingValueError from "../errors/MissingValueError.js"
-import InvalidValueError from "../errors/InvalidValueError.js"
-import MissingReferenceError from "../errors/MissingReferenceError.js"
+import TeamDatabase from "../cards/TeamDatabase.js"
+import { getDate } from "../../utils/format.js"
+import { getChartLength } from "../../utils/chartInfo.js"
+import MissingValueError from "../../errors/MissingValueError.js"
+import InvalidValueError from "../../errors/InvalidValueError.js"
+import MissingReferenceError from "../../errors/MissingReferenceError.js"
 
 class Show {
     static #shows = []

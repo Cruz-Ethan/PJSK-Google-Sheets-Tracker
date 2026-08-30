@@ -1,4 +1,4 @@
-import ShowDatabase from "../databases/ShowDatabase.js";
+import ShowDatabase from "../databases/songs/ShowDatabase.js";
 import { displayShow } from "../utils/display.js";
 
 const pjskGoogleSheetsID = localStorage.getItem('pjskGoogleSheetsID')

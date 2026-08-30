@@ -1,8 +1,8 @@
-import DatabaseHandler from "./DatabaseHandler.js"
-import CharacterDatabase from "./CharacterDatabase.js"
-import MissingValueError from "../errors/MissingValueError.js"
-import InvalidValueError from "../errors/InvalidValueError.js"
-import { getDate } from "../utils/format.js"
+import DatabaseHandler from "../generics/DatabaseHandler.js"
+import CharacterDatabase from "../cards/CharacterDatabase.js"
+import MissingValueError from "../../errors/MissingValueError.js"
+import InvalidValueError from "../../errors/InvalidValueError.js"
+import { getDate } from "../../utils/format.js"
 
 class CharacterSnapshot {
     static #characterSnapshots = []

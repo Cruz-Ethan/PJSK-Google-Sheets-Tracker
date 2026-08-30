@@ -1,4 +1,4 @@
-import CardSnapshotDatabase from "../databases/CardSnapshotDatabase.js"
+import CardSnapshotDatabase from "../databases/snapshots/CardSnapshotDatabase.js"
 import getSnapshot from "./snapshots.js"
 import { getTalent } from "./cardInfo.js"
 

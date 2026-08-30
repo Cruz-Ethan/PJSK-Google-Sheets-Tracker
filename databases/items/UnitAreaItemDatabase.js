@@ -1,7 +1,7 @@
-import MissingReferenceError from "../errors/MissingReferenceError.js"
-import MissingValueError from "../errors/MissingValueError.js"
-import DatabaseHandler from "./DatabaseHandler.js"
-import SupportUnitDatabase from "./SupportUnitDatabase.js"
+import MissingReferenceError from "../../errors/MissingReferenceError.js"
+import MissingValueError from "../../errors/MissingValueError.js"
+import DatabaseHandler from "../generics/DatabaseHandler.js"
+import SupportUnitDatabase from "../cards/SupportUnitDatabase.js"
 
 class UnitAreaItem {
     static #unitAreaItems = []

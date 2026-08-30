@@ -1,4 +1,4 @@
-import TeamDatabase from "../databases/TeamDatabase.js";
+import TeamDatabase from "../databases/cards/TeamDatabase.js";
 import { getImageUrl } from "../utils/cardInfo.js";
 import { getTeamTalent, getTeamHealthBoost, getTeamScoreBoost } from "../utils/teamInfo.js";
 import { shorten } from "../utils/format.js";

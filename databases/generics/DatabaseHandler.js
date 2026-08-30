@@ -1,4 +1,4 @@
-import InvalidIDError from "../errors/InvalidIDError.js"
+import InvalidIDError from "../../errors/InvalidIDError.js"
 
 export default class DatabaseHandler {
     static #database

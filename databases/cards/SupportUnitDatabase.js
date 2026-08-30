@@ -1,6 +1,6 @@
-import MissingReferenceError from "../errors/MissingReferenceError.js"
-import MissingValueError from "../errors/MissingValueError.js"
-import DatabaseHandler from "./DatabaseHandler.js"
+import MissingReferenceError from "../../errors/MissingReferenceError.js"
+import MissingValueError from "../../errors/MissingValueError.js"
+import DatabaseHandler from "../generics/DatabaseHandler.js"
 
 class SupportUnit {
     static #supportUnits = []

@@ -1,5 +1,5 @@
-import CardSnapshotDatabase from "../databases/CardSnapshotDatabase.js"
-import SkillEffectDatabase from "../databases/SkillEffectDatabase.js"
+import CardSnapshotDatabase from "../databases/snapshots/CardSnapshotDatabase.js"
+import SkillEffectDatabase from "../databases/cards/SkillEffectDatabase.js"
 import getSnapshot from "./snapshots.js"
 
 const pjskGoogleSheetsID = localStorage.getItem('pjskGoogleSheetsID')

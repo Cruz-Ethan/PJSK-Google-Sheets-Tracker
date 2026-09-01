@@ -12,21 +12,21 @@ const allTeams = teamDatabase.getAllTeams()
 const teamsList = document.getElementById('teamsList')
 
 allTeams.forEach(team => {
-    teamsList.innerHTML += `<li class="bg-white rounded shadow grid grid-cols-5 justify-between">
-                    <div class="bg-emerald-200 py-5 px-12 flex flex-col justify-center items-center rounded-l col-span-1">
+    teamsList.innerHTML += `<li class="bg-white rounded shadow flex flex-col lg:grid grid-cols-5 justify-between">
+                    <div class="bg-emerald-200 py-5 px-12 flex flex-col justify-center items-center rounded-t lg:rounded-tr-none lg:rounded-l col-span-1">
                         <div>
                             <h2 class="text-xl font-semibold">${shorten(team.team)}</h2>
-                            <p class="text-lg text-gray-500">Talent: ${getTeamTalent(team)}</p>
-                            <p class="text-lg text-gray-500">Health Boost: ${getTeamHealthBoost(team)}</p>
-                            <p class="text-lg text-gray-500">Score Boost: ${getTeamScoreBoost(team)}%</p>
+                            <p class="hidden xl:block text-lg text-gray-500">Talent: ${getTeamTalent(team)}</p>
+                            <p class="hidden xl:block text-lg text-gray-500">Health Boost: ${getTeamHealthBoost(team)}</p>
+                            <p class="hidden xl:block text-lg text-gray-500">Score Boost: ${getTeamScoreBoost(team)}%</p>
                         </div>
                     </div>
-                    <div class="px-16 py-5 grid grid-cols-5 col-span-4 gap-5">
-                        ${team.leader ? '<img src="' + getImageUrl(team.leader) + '"  class="w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square w-full"></div>'}
-                        ${team.subleader ? '<img src="' + getImageUrl(team.subleader) + '"  class="w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square w-full"></div>'}
-                        ${team.member1 ? '<img src="' + getImageUrl(team.member1) + '"  class="w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square w-full"></div>'}
-                        ${team.member2 ? '<img src="' + getImageUrl(team.member2) + '"  class="w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square w-full"></div>'}
-                        ${team.member3 ? '<img src="' + getImageUrl(team.member3) + '" class="w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square w-full"></div>'}
+                    <div class="p-4 2xl:px-16 2xl:py-5 grid grid-cols-[repeat(auto-fit,_minmax(150px,1fr))] sm:grid-cols-5 col-span-4 gap-4 2xl:gap-5 place-items-center">
+                        ${team.leader ? '<img src="' + getImageUrl(team.leader) + '"  class="sm:w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square sm:w-full"></div>'}
+                        ${team.subleader ? '<img src="' + getImageUrl(team.subleader) + '"  class="sm:w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square sm:w-full"></div>'}
+                        ${team.member1 ? '<img src="' + getImageUrl(team.member1) + '"  class="sm:w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square sm:w-full"></div>'}
+                        ${team.member2 ? '<img src="' + getImageUrl(team.member2) + '"  class="sm:w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square sm:w-full"></div>'}
+                        ${team.member3 ? '<img src="' + getImageUrl(team.member3) + '" class="sm:w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square sm:w-full"></div>'}
                     </div>
                 </li>`
 })

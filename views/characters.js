@@ -25,7 +25,7 @@ allUnits.forEach(unit => {
     const unitCharacters = allCharacters.filter(character => character.supportUnit === unit)
 
     const list = document.createElement('ul')
-    list.classList.add("grid", `grid-cols-6`, "gap-4")
+    list.classList.add("grid", "grid-cols-1", "sm:grid-cols-4", "lg:grid-cols-6", "gap-4")
     section.appendChild(list)
 
     unitCharacters.forEach(character => {

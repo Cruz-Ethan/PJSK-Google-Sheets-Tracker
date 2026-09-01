@@ -30,17 +30,17 @@ function displaySong(song) {
 
     const timesPlayed = getTimesPlayed(song)
 
-    songsList.innerHTML += `<li class="flex justify-between gap-8 bg-white shadow rounded-md p-5">
-        <div class="flex items-center gap-4">
+    songsList.innerHTML += `<li class="flex flex-col lg:flex-row justify-between gap-8 bg-white shadow rounded-md p-5">
+        <div class="flex flex-col md:flex-row items-center gap-4">
             <img class="rounded-full w-20 h-20"
                 src="${song.imageUrl}"
                 alt="">
             <div>
-                <div>${formatSongTitle(song)}</div>
-                <div class="font-normal text-gray-500">Played ${timesPlayed} time${timesPlayed === 1 ? '' : 's'}</div>
+                <div class="text-center md:text-start">${formatSongTitle(song)}</div>
+                <div class="text-center md:text-start font-normal text-gray-500">Played ${timesPlayed} time${timesPlayed === 1 ? '' : 's'}</div>
             </div>
         </div>
-        <div class="flex flex-1 items-center justify-end gap-4">
+        <div class="flex flex-col md:flex-row flex-1 items-stretch md:items-center justify-end gap-4">
             ${easyChart ? '<div class="flex-1 text-center rounded bg-green-400 text-white">' + easyChart.level + ' / ' + easyChart.length + '</div>' : ''}
             ${normalChart ? '<div class="flex-1 text-center rounded bg-blue-400 text-white">' + normalChart.level + ' / ' + normalChart.length + '</div>' : ''}
             ${hardChart ? '<div class="flex-1 text-center rounded bg-yellow-400 text-white">' + hardChart.level + ' / ' + hardChart.length + '</div>' : ''}

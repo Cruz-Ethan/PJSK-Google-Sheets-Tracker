@@ -35,20 +35,46 @@
     <main class="p-5 col-span-10 h-full bg-slate-100 flex-1">
         <section>
             <h1 class="text-2xl lg:text-3xl font-semibold my-3">Songs Database</h1>
-            <form class="bg-white shadow mb-4 flex flex-col justify-between p-4 gap-2 rounded">
+            <div class="bg-white shadow mb-4 flex flex-col justify-between p-4 gap-4 rounded">
                 <div class="flex gap-2 items-center">
                     <label for="songTitle">Title:</label>
                     <input class="px-1 border border-slate-300 rounded flex-1" type="text" id="songTitle" name="songTitle">
                 </div>
-                <div class="flex items-center gap-2">
-                    <label for="timesPlayed">Times Played:</label>
-                    <input class="px-1 border border-slate-300 rounded" type="number" id="timesPlayed" name="timesPlayed">
-                    <label for="songLevel">Level:</label>
-                    <input class="px-1 border border-slate-300 rounded" type="number" id="songLevel" name="songLevel">
-                    <label for="numberOfNotes">Notes:</label>
-                    <input class="px-1 border border-slate-300 rounded" type="number" id="numberOfNotes" name="numberOfNotes">
+                <div class="gap-4 grid sm:grid-cols-2 xl:grid-cols-4 grid grid-cols-1">
+                    <button id="difficultySelectButton" class="border border-slate-300 rounded cursor-pointer px-3 py-1 relative text-start [&:not(:has(#difficultySelectList:hover)):hover]:bg-slate-100 transition duration-100">
+                        Difficulties
+                        <ul id="difficultySelectList" class="z-10 overflow-y-auto absolute top-9 left-0 right-0 h-30 whitespace-nowrap bg-white rounded border border-slate-300 overflow-hidden hidden"></ul>
+                    </button>
+                    <button id="appendSelectButton" class="border border-slate-300 rounded cursor-pointer px-3 py-1 relative text-start [&:not(:has(#appendSelectList:hover)):hover]:bg-slate-100 transition duration-100">
+                        Append
+                        <ul id="appendSelectList" class="z-10 overflow-y-auto absolute top-9 left-0 right-0 h-30 whitespace-nowrap bg-white rounded border border-slate-300 overflow-hidden hidden"></ul>
+                    </button>
+                    <div class="flex gap-2 items-center">
+                        <label for="minLevel" class="text-nowrap">Min Level:</label>
+                        <input value="5" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="minLevel" name="minLevel">
+                    </div>
+                    <div class="flex gap-2 items-center">
+                        <label for="maxLevel" class="text-nowrap">Max Level:</label>
+                        <input value="38" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="maxLevel" name="maxLevel">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minNotes" class="text-nowrap">Min Notes:</label>
+                        <input value="0" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="minNotes" name="minNotes">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxNotes" class="text-nowrap">Max Notes:</label>
+                        <input value="3000" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="maxNotes" name="maxNotes">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minTimesPlayed" class="text-nowrap">Min Times Played:</label>
+                        <input value="0" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="minTimesPlayed" name="minTimesPlayed">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxTimesPlayed" class="text-nowrap">Max Times Played:</label>
+                        <input value="1000" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="maxTimesPlayed" name="maxTimesPlayed">
+                    </div>
                 </div>
-            </form>
+            </div>
             <ul class="flex flex-col font-semibold gap-4" id="songsList">
             </ul>
         </section>

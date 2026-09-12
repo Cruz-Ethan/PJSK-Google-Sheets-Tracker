@@ -17,3 +17,7 @@ export function getSongCharts(song) {
 export function getTimesPlayed(song) {
     return allShows.filter(show => show.song === song).length
 }
+
+export function hasAppend(song) {
+    return allCharts.filter(chart => chart.song === song && chart.difficulty.difficulty === 'append').length === 1
+}

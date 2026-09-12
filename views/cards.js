@@ -56,6 +56,8 @@ const trainedObj = {name: 'trained'}
 const untrainedObj = {name: 'untrained'}
 const trainedFilterList = [trainedObj, untrainedObj]
 
+const cardTitle = document.getElementById('cardTitle')
+
 const minLevel = document.getElementById('minLevel')
 const maxLevel = document.getElementById('maxLevel')
 const minTalent = document.getElementById('minTalent')
@@ -76,6 +78,7 @@ addFunctionToFilter(supportUnitSelectButton, supportUnitSelectList, supportUnitF
 addFunctionToFilter(skillTypeSelectButton, skillTypeSelectList, skillTypeFilterList, [...allSkillTypes], renderCardList)
 addFunctionToFilter(trainedSelectButton, trainedSelectList, trainedFilterList, [...trainedFilterList], renderCardList)
 
+cardTitle.addEventListener('change', renderCardList)
 minLevel.addEventListener('change', renderCardList)
 maxLevel.addEventListener('change', renderCardList)
 minTalent.addEventListener('change', renderCardList)
@@ -111,6 +114,9 @@ function renderCardList() {
 
 function isFilterPassing(snapshot) {
     if (snapshot === null) {
+        return false
+    }
+    if(!snapshot.card.card.toLowerCase().includes(cardTitle.value.toLowerCase())) {
         return false
     }
     if (!characterFilterList.includes(snapshot.card.character)) {

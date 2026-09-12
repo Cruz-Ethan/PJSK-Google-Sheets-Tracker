@@ -11,8 +11,30 @@ const allTeams = teamDatabase.getAllTeams()
 
 const teamsList = document.getElementById('teamsList')
 
-allTeams.forEach(team => {
-    teamsList.innerHTML += `<li class="bg-white rounded shadow flex flex-col lg:grid grid-cols-5 justify-between">
+const teamTitle = document.getElementById('teamTitle')
+
+const minTalent = document.getElementById('minTalent')
+const maxTalent = document.getElementById('maxTalent')
+const minScoreBoost = document.getElementById('minScoreBoost')
+const maxScoreBoost = document.getElementById('maxScoreBoost')
+const minHealthBoost = document.getElementById('minHealthBoost')
+const maxHealthBoost = document.getElementById('maxHealthBoost')
+
+teamTitle.addEventListener('change', renderTeamList)
+minTalent.addEventListener('change', renderTeamList)
+maxTalent.addEventListener('change', renderTeamList)
+minScoreBoost.addEventListener('change', renderTeamList)
+maxScoreBoost.addEventListener('change', renderTeamList)
+minHealthBoost.addEventListener('change', renderTeamList)
+maxHealthBoost.addEventListener('change', renderTeamList)
+
+renderTeamList()
+
+function renderTeamList() {
+    teamsList.innerHTML = ''
+    allTeams.forEach(team => {
+        if(!isFilterPassing(team)) return
+        teamsList.innerHTML += `<li class="bg-white rounded shadow flex flex-col lg:grid grid-cols-5 justify-between">
                     <div class="bg-emerald-200 py-5 px-12 flex flex-col justify-center items-center rounded-t lg:rounded-tr-none lg:rounded-l col-span-1">
                         <div>
                             <h2 class="text-xl font-semibold">${shorten(team.team)}</h2>
@@ -29,4 +51,29 @@ allTeams.forEach(team => {
                         ${team.member3 ? '<img src="' + getImageUrl(team.member3) + '" class="sm:w-full">' : '<div class="bg-gray-200 rounded-lg aspect-square sm:w-full"></div>'}
                     </div>
                 </li>`
-})
+    })
+}
+
+function isFilterPassing(team) {
+    if(!team.team.toLowerCase().includes(teamTitle.value.toLowerCase())) {
+        return false
+    }
+
+    const teamTalent = getTeamTalent(team)
+    if(teamTalent < minTalent.value || teamTalent > maxTalent.value) {
+        return false
+    }
+
+    const teamHealthBoost = getTeamHealthBoost(team)
+    if(teamHealthBoost < minHealthBoost.value || teamHealthBoost > maxHealthBoost.value) {
+        return false
+    }
+
+    const teamScoreBoost = getTeamScoreBoost(team)
+    if(teamScoreBoost < minScoreBoost.value || teamScoreBoost > maxScoreBoost.value) {
+        return false
+    }
+
+    return true
+}
+

@@ -28,20 +28,38 @@
     <main class="p-5 col-span-10 h-full bg-slate-100 flex-1">
         <section>
             <h1 class="text-2xl lg:text-3xl font-semibold my-3">Team Database</h1>
-            <form class="bg-white shadow mb-4 flex flex-col justify-between p-4 gap-2 rounded">
+            <div class="bg-white shadow mb-4 flex flex-col justify-between p-4 gap-4 rounded">
                 <div class="flex gap-2 items-center">
-                    <label for="cardTitle">Title:</label>
-                    <input class="border border-slate-300 rounded flex-1 px-1" type="text" id="cardTitle" name="cardTitle">
+                    <label for="teamTitle">Title:</label>
+                    <input class="px-1 border border-slate-300 rounded flex-1" type="text" id="teamTitle" name="teamTitle">
                 </div>
-                <div class="flex items-center gap-2">
-                    <label for="talent">Talent:</label>
-                    <input class="px-1 border border-slate-300 rounded" type="number" id="talent" name="talent">
-                    <label for="healthBoost">Health Boost:</label>
-                    <input class="px-1 border border-slate-300 rounded" type="number" id="healthBoost" name="healthBoost">
-                    <label for="scoreBoost">Score Boost:</label>
-                    <input class="px-1 border border-slate-300 rounded" type="number" id="scoreBoost" name="scoreBoost">
+                <div class="gap-4 grid sm:grid-cols-2 xl:grid-cols-4 grid grid-cols-1">
+                    <div class="flex gap-2">
+                        <label for="minTalent" class="text-nowrap">Min Talent:</label>
+                        <input value="0" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" type="text" id="minTalent" name="minTalent">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxTalent" class="text-nowrap">Max Talent:</label>
+                        <input value="500000" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" type="text" id="maxTalent" name="maxTalent">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minScoreBoost" class="text-nowrap">Min Score Boost:</label>
+                        <input value="0" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" type="text" id="minScoreBoost" name="minScoreBoost">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxScoreBoost" class="text-nowrap">Max Score Boost:</label>
+                        <input value="1000" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" type="text" id="maxScoreBoost" name="maxScoreBoost">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minHealthBoost" class="text-nowrap">Min Health Boost:</label>
+                        <input value="0" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" type="text" id="minHealthBoost" name="minHealthBoost">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxHealthBoost" class="text-nowrap">Max Health Boost:</label>
+                        <input value="6000" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" type="text" id="maxHealthBoost" name="maxHealthBoost">
+                    </div>
                 </div>
-            </form>
+            </div>
             <ul class="flex flex-col gap-4" id="teamsList"></ul>
         </section>
     </main>

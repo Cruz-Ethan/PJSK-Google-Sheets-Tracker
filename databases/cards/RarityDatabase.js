@@ -23,6 +23,10 @@ class Rarity {
 
     get rarity() { return this.#rarity }
 
+    get name() {
+        return this.#rarity
+    }
+
     toString() {
         return this.#rarity
     }

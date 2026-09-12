@@ -28,53 +28,88 @@
     <main class="p-5 col-span-10 h-full bg-slate-100 flex-1">
         <section>
             <h1 class="text-2xl lg:text-3xl font-semibold my-3">Card Database</h1>
-            <form class="bg-white shadow mb-4 flex flex-col justify-between p-4 gap-2 rounded">
+            <div class="bg-white shadow mb-4 flex flex-col justify-between p-4 gap-2 rounded">
                 <div class="flex gap-2 items-center">
                     <label for="cardTitle">Title:</label>
                     <input class="px-1 border border-slate-300 rounded flex-1" type="text" id="cardTitle" name="cardTitle">
                 </div>
-                <div class="flex gap-2 items-center">
-                    <label for="character">Character:</label>
-                    <select name="character" class="border border-slate-300 rounded" id="character" multiple>
-                        <option value="tenmaTsukasa">Tenma Tsukasa</option>
-                        <option value="hatsuneMiku">Hatsune Miku</option>
-                        <option value="tenmaSaki">Tenma Saki</option>
-                        <option value="enaShinonome">Ena Shinonome</option>
-                        <option value="hoshinoIchika">Hoshino Ichika</option>
-                        <option value="kaito">KAITO</option>
-                        <option value="MEIKO">MEIKO</option>
-                        <option value="yoisakiKanade">Yoisaki Kanade</option>
-                        <option value="shiraishiAn">Shiraishi An</option>
-                    </select>
-                    <label for="rarity">Rarity:</label>
-                    <select name="rarity" class="border border-slate-300 rounded" id="rarity" multiple>
-                        <option value="1star">1 star</option>
-                        <option value="2star">2 stars</option>
-                        <option value="3star">3 stars</option>
-                        <option value="birthday">Birthday</option>
-                        <option value="4star">4 stars</option>
-                    </select>
-                    <label for="attribute">Attribute:</label>
-                    <select name="attribute" class="border border-slate-300 rounded" id="attribute" multiple>
-                        <option value="pure">Pure</option>
-                        <option value="cool">Cool</option>
-                        <option value="mysterious">Mysterious</option>
-                        <option value="happy">Happy</option>
-                        <option value="cute">Cute</option>
-                    </select>
-                    <label for="unit">Unit:</label>
-                    <select name="unit" class="border border-slate-300 rounded" id="unit" multiple>
-                        <option value="leoNeed">Leo/need</option>
-                        <option value="wonderlandsShowtime">Wonderlands x Showtime</option>
-                        <option value="virtualSinger">Virtual Singer</option>
-                        <option value="vividBadSquad">Vivid BAD SQUAD</option>
-                        <option value="nightcord">Nightcord at 25:00</option>
-                        <option value="moreMoreJump">MORE MORE JUMP</option>
-                    </select>
-                    <label for="cardLevel">Level:</label>
-                    <input class="px-1 border border-slate-300 rounded" type="number" id="cardLevel" name="cardLevel">
+                <div class="gap-4 grid sm:grid-cols-2 lg:grid-cols-4 grid grid-cols-1">
+                    <div class="flex gap-2">
+                        <label for="minLevel" class="text-nowrap">Min Level:</label>
+                        <input value="0" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" type="text" id="minLevel" name="minLevel">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxLevel" class="text-nowrap">Max Level:</label>
+                        <input value="60" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" type="text" id="maxLevel" name="maxLevel">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minTalent" class="text-nowrap">Min Talent:</label>
+                        <input value="0" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" type="text" id="minTalent" name="minTalent">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxTalent" class="text-nowrap">Max Talent:</label>
+                        <input value="40000" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" type="text" id="maxTalent" name="maxTalent">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minSkillLevel" class="text-nowrap">Min Skill Level:</label>
+                        <input value="1" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" type="text" id="minSkillLevel" name="minSkillLevel">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxSkillLevel" class="text-nowrap">Max Skill Level:</label>
+                        <input value="4" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" type="text" id="maxSkillLevel" name="maxSkillLevel">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minRank" class="text-nowrap">Min Rank:</label>
+                        <input value="0" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" type="text" id="minRank" name="minRank">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxRank" class="text-nowrap">Max Rank:</label>
+                        <input value="5" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" type="text" id="maxRank" name="maxRank">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minScoreBoost" class="text-nowrap">Min Score Boost:</label>
+                        <input value="0" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" type="text" id="minScoreBoost" name="minScoreBoost">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxScoreBoost" class="text-nowrap">Max Score Boost:</label>
+                        <input value="150" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" type="text" id="maxScoreBoost" name="maxScoreBoost">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minHealthBoost" class="text-nowrap">Min Health Boost:</label>
+                        <input value="0" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" type="text" id="minHealthBoost" name="minHealthBoost">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxHealthBoost" class="text-nowrap">Max Health Boost:</label>
+                        <input value="850" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" type="text" id="maxHealthBoost" name="maxHealthBoost">
+                    </div>
                 </div>
-            </form>
+                <div class="gap-4 grid sm:grid-cols-4 grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))">
+                    <button id="characterSelectButton" class="border border-slate-300 rounded cursor-pointer px-3 py-1 relative text-start [&:not(:has(#characterSelectList:hover)):hover]:bg-slate-100 transition duration-100">
+                        Characters
+                        <ul id="characterSelectList" class="z-10 overflow-y-auto absolute top-9 left-0 right-0 h-30 whitespace-nowrap bg-white rounded border border-slate-300 overflow-hidden hidden"></ul>
+                    </button>
+                    <button id="attributeSelectButton" class="border border-slate-300 rounded cursor-pointer px-3 py-1 relative text-start [&:not(:has(#attributeSelectList:hover)):hover]:bg-slate-100 transition duration-100">
+                        Attributes
+                        <ul id="attributeSelectList" class="z-10 overflow-y-auto absolute top-9 left-0 right-0 h-30 whitespace-nowrap bg-white rounded border border-slate-300 overflow-hidden hidden"></ul>
+                    </button>
+                    <button id="raritySelectButton" class="border border-slate-300 rounded cursor-pointer px-3 py-1 relative text-start [&:not(:has(#raritySelectList:hover)):hover]:bg-slate-100 transition duration-100">
+                        Rarities
+                        <ul id="raritySelectList" class="z-10 overflow-y-auto absolute top-9 left-0 right-0 h-30 whitespace-nowrap bg-white rounded border border-slate-300 overflow-hidden hidden"></ul>
+                    </button>
+                    <button id="supportUnitSelectButton" class="border border-slate-300 rounded cursor-pointer px-3 py-1 relative text-start [&:not(:has(#supportUnitSelectList:hover)):hover]:bg-slate-100 transition duration-100">
+                        Support Units
+                        <ul id="supportUnitSelectList" class="z-10 overflow-y-auto absolute top-9 left-0 right-0 h-30 whitespace-nowrap bg-white rounded border border-slate-300 overflow-hidden hidden"></ul>
+                    </button>
+                    <button id="skillTypeSelectButton" class="border border-slate-300 rounded cursor-pointer px-3 py-1 relative text-start [&:not(:has(#skillTypeSelectList:hover)):hover]:bg-slate-100 transition duration-100">
+                        Skill Types
+                        <ul id="skillTypeSelectList" class="z-10 overflow-y-auto absolute top-9 left-0 right-0 h-30 whitespace-nowrap bg-white rounded border border-slate-300 overflow-hidden hidden"></ul>
+                    </button>
+                    <button id="trainedSelectButton" class="border border-slate-300 rounded cursor-pointer px-3 py-1 relative text-start [&:not(:has(#trainedSelectList:hover)):hover]:bg-slate-100 transition duration-100">
+                        Trained
+                        <ul id="trainedSelectList" class="z-10 overflow-y-auto absolute top-9 left-0 right-0 h-30 whitespace-nowrap bg-white rounded border border-slate-300 overflow-hidden hidden"></ul>
+                    </button>
+                </div>
+            </div>
             <ul class="grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-4" id="cardList"></ul>
         </section>
     </main>

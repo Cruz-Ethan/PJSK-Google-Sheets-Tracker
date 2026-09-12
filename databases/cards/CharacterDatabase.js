@@ -40,6 +40,10 @@ class Character {
         return this.#supportUnit
     }
 
+    get name() {
+        return this.#character
+    }
+
     toString() {
         return this.#character
     }

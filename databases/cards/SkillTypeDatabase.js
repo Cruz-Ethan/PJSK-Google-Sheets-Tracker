@@ -23,6 +23,10 @@ class SkillType {
 
     get skillType() { return this.#skillType }
 
+    get name() {
+        return this.#skillType
+    }
+
     toString() {
         return this.#skillType
     }

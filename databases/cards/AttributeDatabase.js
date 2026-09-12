@@ -24,6 +24,10 @@ class Attribute {
         return this.#attribute
     }
 
+    get name() {
+        return this.#attribute
+    }
+
     toString() {
         return this.#attribute
     }

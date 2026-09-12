@@ -23,6 +23,10 @@ class SupportUnit {
 
     get supportUnit() { return this.#supportUnit }
 
+    get name() {
+        return this.#supportUnit
+    }
+
     toString() {
         return this.#supportUnit
     }

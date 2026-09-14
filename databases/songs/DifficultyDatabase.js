@@ -22,6 +22,7 @@ class Difficulty {
     }
 
     get difficulty() { return this.#difficulty }
+    get name() { return this.#difficulty }
 
     toString() {
         return this.#difficulty

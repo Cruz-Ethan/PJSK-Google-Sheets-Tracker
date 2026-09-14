@@ -22,6 +22,7 @@ class ShowType {
     }
 
     get showType() { return this.#showType }
+    get name() { return this.#showType }
 
     toString() {
         return this.#showType

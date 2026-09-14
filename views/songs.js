@@ -1,7 +1,7 @@
 import SongDatabase from "../databases/songs/SongDatabase.js"
 import DifficultyDatabase from "../databases/songs/DifficultyDatabase.js"
 import addFunctionToFilter from "../utils/itemFilter.js"
-import { hasAppend, hasAppend } from "../utils/songInfo.js"
+import { hasAppend } from "../utils/songInfo.js"
 import { getSongCharts, getTimesPlayed } from "../utils/songInfo.js"
 import { getChartLength, getChartLevel } from "../utils/chartInfo.js"
 import { formatSongTitle } from "../utils/format.js"
@@ -91,11 +91,11 @@ function displaySong(song) {
 }
 
 function isFilterPassing(song) {
-    const hasAppend = hasAppend(song)
-    if(!appendFilterList.includes(appendObj) && hasAppend) {
+    const songHasAppend = hasAppend(song)
+    if(!appendFilterList.includes(appendObj) && songHasAppend) {
         return false
     }
-    if(!appendFilterList.includes(noAppendObj) && !hasAppend) {
+    if(!appendFilterList.includes(noAppendObj) && !songHasAppend) {
         return false
     }
 
@@ -113,7 +113,7 @@ function isFilterPassing(song) {
         if(!difficultyFilterList.includes(difficulty)) {
             return
         }
-        if(!hasAppend && difficulty.name === 'append') {
+        if(!songHasAppend && difficulty.name === 'append') {
             return
         }
 

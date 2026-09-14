@@ -27,6 +27,7 @@ class Song {
 
     get song() { return this.#song }
     get imageUrl() { return this.#imageUrl }
+    get name() { return this.#song }
 
     toString() {
         return this.#song

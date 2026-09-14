@@ -50,6 +50,7 @@ class Team {
     get member1() { return this.#member1 }
     get member2() { return this.#member2 }
     get member3() { return this.#member3 }
+    get name() { return this.#team }
 
     toString() {
         return this.#team

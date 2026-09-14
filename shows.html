@@ -28,20 +28,140 @@
     <main class="p-5 col-span-10 h-full bg-slate-100 flex-1">
         <h1 class="text-2xl lg:text-3xl font-semibold my-3">Shows Database</h1>
         <section class="mb-10">
-            <form class="bg-white shadow mb-4 flex flex-col justify-between p-4 gap-2 rounded">
+            <div class="bg-white shadow mb-4 flex flex-col justify-between p-4 gap-4 rounded">
                 <div class="flex gap-2 items-center">
                     <label for="songTitle">Song Title:</label>
                     <input class="px-1 border border-slate-300 rounded flex-1" type="text" id="songTitle" name="songTitle">
                 </div>
-                <div class="flex items-center gap-2">
-                    <label for="score">Score:</label>
-                    <input class="px-1 border border-slate-300 rounded" type="number" id="score" name="score">
-                    <label for="songLevel">Level:</label>
-                    <input class="px-1 border border-slate-300 rounded" type="number" id="songLevel" name="songLevel">
-                    <label for="numberOfNotes">Notes:</label>
-                    <input class="px-1 border border-slate-300 rounded" type="number" id="numberOfNotes" name="numberOfNotes">
+                <div class="gap-4 grid sm:grid-cols-2 xl:grid-cols-4 grid grid-cols-1">
+                    <div class="flex gap-2 items-center">
+                        <label for="minLevel" class="text-nowrap">Min Level:</label>
+                        <input value="5" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="minLevel" name="minLevel">
+                    </div>
+                    <div class="flex gap-2 items-center">
+                        <label for="maxLevel" class="text-nowrap">Max Level:</label>
+                        <input value="38" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="maxLevel" name="maxLevel">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minNotes" class="text-nowrap">Min Notes:</label>
+                        <input value="0" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="minNotes" name="minNotes">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxNotes" class="text-nowrap">Max Notes:</label>
+                        <input value="3000" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="maxNotes" name="maxNotes">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minNoteSpeed" class="text-nowrap">Min Note Speed:</label>
+                        <input value="1" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="minNoteSpeed" name="minNoteSpeed">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxNoteSpeed" class="text-nowrap">Max Note Speed:</label>
+                        <input value="12" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="maxNoteSpeed" name="maxNoteSpeed">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minTime" class="text-nowrap">Min Time:</label>
+                        <input value="2026-01-01" type="date" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="minTime" name="minTime">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxTime" class="text-nowrap">Max Time:</label>
+                        <input type="date" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="maxTime" name="maxTime">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minScore" class="text-nowrap">Min Score:</label>
+                        <input value="0" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="minScore" name="minScore">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxScore" class="text-nowrap">Max Score:</label>
+                        <input value="4000000" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="maxScore" name="maxScore">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minInterruptions" class="text-nowrap">Min Interruptions:</label>
+                        <input value="0" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="minInterruptions" name="minInterruptions">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxInterruptions" class="text-nowrap">Max Interruptions:</label>
+                        <input value="10" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="maxInterruptions" name="maxInterruptions">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minAttempts" class="text-nowrap">Min Attempts:</label>
+                        <input value="0" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="minAttempts" name="minAttempts">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxAttempts" class="text-nowrap">Max Attempts:</label>
+                        <input value="50" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="maxAttempts" name="maxAttempts">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minLongestCombo" class="text-nowrap">Min Longest Combo:</label>
+                        <input value="0" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="minLongestCombo" name="minLongestCombo">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxLongestCombo" class="text-nowrap">Max Longest Combo:</label>
+                        <input value="3000" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="maxLongestCombo" name="maxLongestCombo">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minPerfectPercentage" class="text-nowrap">Min Perfect %:</label>
+                        <input value="0" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="minPerfectPercentage" name="minPerfectPercentage" min="0" max="100">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxPerfectPercentage" class="text-nowrap">Max Perfect %:</label>
+                        <input value="100" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="maxPerfectPercentage" name="maxPerfectPercentage" min="0" max="100">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minGreatPercentage" class="text-nowrap">Min Great %:</label>
+                        <input value="0" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="minGreatPercentage" name="minGreatPercentage" min="0" max="100">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxGreatPercentage" class="text-nowrap">Max Great %:</label>
+                        <input value="100" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="maxGreatPercentage" name="maxGreatPercentage" min="0" max="100">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minGoodPercentage" class="text-nowrap">Min Good %:</label>
+                        <input value="0" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="minGoodPercentage" name="minGoodPercentage" min="0" max="100">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxGoodPercentage" class="text-nowrap">Max Good %:</label>
+                        <input value="100" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="maxGoodPercentage" name="maxGoodPercentage" min="0" max="100">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minBadPercentage" class="text-nowrap">Min Bad %:</label>
+                        <input value="0" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="minBadPercentage" name="minBadPercentage" min="0" max="100">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxBadPercentage" class="text-nowrap">Max Bad %:</label>
+                        <input value="100" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="maxBadPercentage" name="maxBadPercentage" min="0" max="100">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="minMissPercentage" class="text-nowrap">Min Miss %:</label>
+                        <input value="0" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="minMissPercentage" name="minMissPercentage" min="0" max="100">
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="maxMissPercentage" class="text-nowrap">Max Miss %:</label>
+                        <input value="100" type="number" class="px-1 border border-slate-300 rounded flex-1 min-w-0" id="maxMissPercentage" name="maxMissPercentage" min="0" max="100">
+                    </div>
                 </div>
-            </form>
+                <div class="gap-4 grid sm:grid-cols-4 grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))">
+                    <button id="difficultySelectButton" class="border border-slate-300 rounded cursor-pointer px-3 py-1 relative text-start [&:not(:has(#difficultySelectList:hover)):hover]:bg-slate-100 transition duration-100">
+                        Difficulties
+                        <ul id="difficultySelectList" class="z-10 overflow-y-auto absolute top-9 left-0 right-0 h-30 whitespace-nowrap bg-white rounded border border-slate-300 overflow-hidden hidden"></ul>
+                    </button>
+                    <button id="showTypeSelectButton" class="border border-slate-300 rounded cursor-pointer px-3 py-1 relative text-start [&:not(:has(#showTypeSelectList:hover)):hover]:bg-slate-100 transition duration-100">
+                        Show Types
+                        <ul id="showTypeSelectList" class="z-10 overflow-y-auto absolute top-9 left-0 right-0 h-30 whitespace-nowrap bg-white rounded border border-slate-300 overflow-hidden hidden"></ul>
+                    </button>
+                    <button id="teamSelectButton" class="border border-slate-300 rounded cursor-pointer px-3 py-1 relative text-start [&:not(:has(#teamSelectList:hover)):hover]:bg-slate-100 transition duration-100">
+                        Teams
+                        <ul id="teamSelectList" class="z-10 overflow-y-auto absolute top-9 left-0 right-0 h-30 whitespace-nowrap bg-white rounded border border-slate-300 overflow-hidden hidden"></ul>
+                    </button>
+                    <button id="rankSelectButton" class="border border-slate-300 rounded cursor-pointer px-3 py-1 relative text-start [&:not(:has(#rankSelectList:hover)):hover]:bg-slate-100 transition duration-100">
+                        Ranks
+                        <ul id="rankSelectList" class="z-10 overflow-y-auto absolute top-9 left-0 right-0 h-30 whitespace-nowrap bg-white rounded border border-slate-300 overflow-hidden hidden"></ul>
+                    </button>
+                    <button id="clearStatusSelectButton" class="border border-slate-300 rounded cursor-pointer px-3 py-1 relative text-start [&:not(:has(#clearStatusSelectList:hover)):hover]:bg-slate-100 transition duration-100">
+                        Clear Status
+                        <ul id="clearStatusSelectList" class="z-10 overflow-y-auto absolute top-9 left-0 right-0 h-30 whitespace-nowrap bg-white rounded border border-slate-300 overflow-hidden hidden"></ul>
+                    </button>
+                </div>
+            </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-7 gap-4 md:gap-2 md:bg-white md:shadow md:rounded md:p-5 text-lg font-semibold" id="showsTable">
                 <div class="col-span-7 hidden md:grid grid-cols-7 gap-2 bg-gray-100">
                     <div class="text-center">Date</div>

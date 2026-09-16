@@ -8,6 +8,12 @@ import SkillTypeDatabase from "../databases/cards/SkillTypeDatabase.js";
 import addFunctionToFilter from "../utils/itemFilter.js";
 import { getScoreBoostPercentage, getHealthBoost } from "../utils/cardInfo.js";
 import getSnapshot from "../utils/snapshots.js";
+import addFunctionToNavbar from "../utils/toggleNavbar.js";
+
+const navbar = document.getElementById('navbar')
+const openNavbarButton = document.getElementById('openNavbarButton')
+const closeNavbarButton = document.getElementById('closeNavbarButton')
+addFunctionToNavbar(navbar, openNavbarButton, closeNavbarButton)
 
 const pjskGoogleSheetsID = localStorage.getItem('pjskGoogleSheetsID')
 if (!pjskGoogleSheetsID) window.location.href = 'index.html'

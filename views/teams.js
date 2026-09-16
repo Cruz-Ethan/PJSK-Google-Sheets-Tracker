@@ -2,6 +2,12 @@ import TeamDatabase from "../databases/cards/TeamDatabase.js";
 import { getImageUrl } from "../utils/cardInfo.js";
 import { getTeamTalent, getTeamHealthBoost, getTeamScoreBoost } from "../utils/teamInfo.js";
 import { shorten } from "../utils/format.js";
+import addFunctionToNavbar from "../utils/toggleNavbar.js";
+
+const navbar = document.getElementById('navbar')
+const openNavbarButton = document.getElementById('openNavbarButton')
+const closeNavbarButton = document.getElementById('closeNavbarButton')
+addFunctionToNavbar(navbar, openNavbarButton, closeNavbarButton)
 
 const pjskGoogleSheetsID = localStorage.getItem('pjskGoogleSheetsID')
 if (!pjskGoogleSheetsID) window.location.href = 'index.html'
@@ -76,4 +82,3 @@ function isFilterPassing(team) {
 
     return true
 }
-

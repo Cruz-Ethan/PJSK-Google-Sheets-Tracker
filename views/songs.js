@@ -5,6 +5,12 @@ import { hasAppend } from "../utils/songInfo.js"
 import { getSongCharts, getTimesPlayed } from "../utils/songInfo.js"
 import { getChartLength, getChartLevel } from "../utils/chartInfo.js"
 import { formatSongTitle } from "../utils/format.js"
+import addFunctionToNavbar from "../utils/toggleNavbar.js";
+
+const navbar = document.getElementById('navbar')
+const openNavbarButton = document.getElementById('openNavbarButton')
+const closeNavbarButton = document.getElementById('closeNavbarButton')
+addFunctionToNavbar(navbar, openNavbarButton, closeNavbarButton)
 
 const pjskGoogleSheetsID = localStorage.getItem('pjskGoogleSheetsID')
 if (!pjskGoogleSheetsID) window.location.href = 'index.html'

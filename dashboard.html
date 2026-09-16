@@ -7,11 +7,19 @@
     <title>Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="icon" type="image/x-icon" href="https://cdn2.cdnstep.com/NxeQPF9CoYXp4o0PLntC/cover-1.thumb256.png">
+    <script src="https://kit.fontawesome.com/25180c9a39.js" crossorigin="anonymous"></script>
     <script src="views/dashboard.js" type="module" defer></script>
 </head>
 
 <body class="flex flex-col lg:grid lg:grid-cols-12 min-h-screen">
-    <header class="p-5 col-span-2 shadow-lg z-10 relative">
+    <header class="p-5 col-span-2 shadow-lg z-10 relative flex flex-col gap-2">
+        <button id="openNavbarButton" class="lg:hidden self-end cursor-pointer">
+            <i class="fa-solid fa-bars fa-xl text-gray-500"></i>
+        </button>
+        <button id="closeNavbarButton" class="hidden lg:hidden self-end cursor-pointer">
+            <i class="fa-solid fa-xmark fa-xl text-gray-500"></i>
+        </button>
+        <nav id="navbar" class="sticky top-5 hidden lg:block">
         <nav class="sticky top-5">
             <ul class="flex flex-col gap-2">
                 <li class="p-2 text-gray-500 rounded hover:bg-gray-100 transition duration-100 cursor-pointer text-center lg:text-start"><a

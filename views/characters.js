@@ -1,6 +1,12 @@
 import CharacterDatabase from "../databases/cards/CharacterDatabase.js";
 import SupportUnitDatabase from "../databases/cards/SupportUnitDatabase.js";
 import { getRank } from "../utils/characterInfo.js";
+import addFunctionToNavbar from "../utils/toggleNavbar.js";
+
+const navbar = document.getElementById('navbar')
+const openNavbarButton = document.getElementById('openNavbarButton')
+const closeNavbarButton = document.getElementById('closeNavbarButton')
+addFunctionToNavbar(navbar, openNavbarButton, closeNavbarButton)
 
 const pjskGoogleSheetsID = localStorage.getItem('pjskGoogleSheetsID')
 if (!pjskGoogleSheetsID) window.location.href = 'index.html'

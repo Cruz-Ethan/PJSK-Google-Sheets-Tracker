@@ -3,6 +3,12 @@ import { simpleDate, formatAccuracy } from "../utils/format.js";
 import { getScoreColor, getDifficultyColor, getRankColor,  getLevelColor } from "../utils/colors.js";
 import { getShowLevel } from "../utils/showInfo.js";
 import { displayShow } from "../utils/display.js";
+import addFunctionToNavbar from "../utils/toggleNavbar.js";
+
+const navbar = document.getElementById('navbar')
+const openNavbarButton = document.getElementById('openNavbarButton')
+const closeNavbarButton = document.getElementById('closeNavbarButton')
+addFunctionToNavbar(navbar, openNavbarButton, closeNavbarButton)
 
 const pjskGoogleSheetsID = localStorage.getItem('pjskGoogleSheetsID')
 if (!pjskGoogleSheetsID) window.location.href = 'index.html'
